@@ -1,0 +1,1397 @@
+{
+  "012":
+  {
+    "name":"Дошкільна освіта",
+    "ukr":0.35,
+    "math":0.25,
+    "history":0.4,
+    "english":0.4,
+    "biology":0.4,
+    "physics":0.25,
+    "chemistry": 0.25
+  },
+
+  "013":
+  {
+    "name":"Початкова освіта",
+    "ukr":0.35,
+    "math": 0.4,
+    "history": 0.25,
+    "english":0.35,
+    "biology":0.25,
+    "physics":0.25,
+    "chemistry": 0.25
+  },
+
+  "014.01":
+  {
+    "name":"Середня освіта (Українська мова і література)",
+    "ukr":0.5,
+    "math": 0.2,
+    "history": 0.3,
+    "english":0.4,
+    "biology":0.25,
+    "physics":0.2,
+    "chemistry": 0.2
+  },
+
+  "014.02":
+  {
+    "name":"Середня освіта (Мова та зарубіжна література)",
+    "ukr":0.4,
+    "math": 0.3,
+    "history": 0.3,
+    "english":0.5,
+    "biology":0.25,
+    "physics":0.25,
+    "chemistry": 0.25
+  },
+
+  "014.03":
+  {
+    "name":"Середня освіта (Історія)",
+    "ukr":0.3,
+    "math": 0.2,
+    "history": 0.5,
+    "english":0.3,
+    "biology":0.25,
+    "physics":0.2,
+    "chemistry": 0.2
+  },
+
+  "014.04":
+  {
+    "name":"Середня освіта (Математика)",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.3,
+    "biology":0.3,
+    "physics":0.5,
+    "chemistry":0.3
+  },
+
+  "014.05":
+  {
+    "name":"Середня освіта (Біологія та здоров'я людини)",
+    "ukr":0.3,
+    "math":0.35,
+    "history":0.35,
+    "english":0.3,
+    "biology":0.5,
+    "physics":0.3,
+    "chemistry":0.3
+
+  },
+
+  "014.06":
+  {
+    "name":"Середня освіта (Хімія)",
+    "ukr":0.3,
+    "math":0.35,
+    "history":0.35,
+    "english":0.35,
+    "biology":0.35,
+    "physics":0.35,
+    "chemistry":0.5
+
+  },
+
+  "014.07":
+  {
+    "name":"Середня освіта (Географія)",
+    "ukr":0.3,
+    "math":0.35,
+    "history":0.35,
+    "english":0.35,
+    "biology":0.35,
+    "physics":0.35,
+    "chemistry":0.35
+
+  },
+
+  "014.08":
+  {
+    "name":"Середня освіта (Фізика та астрономія)",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.3,
+    "biology":0.3,
+    "physics":0.5,
+    "chemistry":0.3
+
+  },
+
+  "014.09":
+  {
+    "name":"Середня освіта (Інформатика)",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.3,
+    "biology":0.3,
+    "physics":0.5,
+    "chemistry":0.3
+  },
+
+  "014.10":
+  {
+    "name":"Середня освіта (Трудове навчання та технології)",
+    "ukr":0.3,
+    "math":0.4,
+    "history":0.25,
+    "english":0.25,
+    "biology":0.3,
+    "physics":0.4,
+    "chemistry":0.3
+  },
+
+  "014.11":
+  {
+    "name":"Середня освіта (Фізична культура)",
+    "ukr":0.4,
+    "math":0.3,
+    "history":0.3,
+    "english":0.3,
+    "biology":0.3,
+    "physics":0.3,
+    "chemistry":0.3
+  },
+
+  "014.12":
+  {
+    "name":"Середня освіта (Образотворче мистецтво)",
+    "ukr":0.4,
+    "math":0.25,
+    "history":0.35,
+    "english":0.35,
+    "biology":0.2,
+    "physics":0.2,
+    "chemistry":0.2
+  },
+
+  "014.13":
+  {
+    "name":"Середня освіта (Музичне мистецтво)",
+    "ukr":0.4,
+    "math":0.25,
+    "history":0.35,
+    "english":0.35,
+    "biology":0.2,
+    "physics":0.2,
+    "chemistry":0.2
+  },
+
+  "014.15":
+  {
+    "name":"Середня освіта (Природничі науки)",
+    "ukr":0.4,
+    "math":0.3,
+    "history":0.3,
+    "english":0.3,
+    "biology":0.4,
+    "physics":0.4,
+    "chemistry":0.4
+  },
+
+  "014.16":
+  {
+    "name":"Середня освіта (Захист України)",
+    "ukr":0.4,
+    "math":0.3,
+    "history":0.3,
+    "english":0.3,
+    "biology":0.3,
+    "physics":0.3,
+    "chemistry":0.3
+  },
+
+  "016":
+  {
+    "name":"Спеціальна освіта",
+    "ukr":0.4,
+    "math":0.3,
+    "history":0.3,
+    "english":0.3,
+    "biology":0.5,
+    "physics":0.3,
+    "chemistry":0.3
+  },
+
+  "022":
+  {
+    "name":"Дизайн",
+    "ukr":0.35,
+    "math":0.4,
+    "history":0.25,
+    "english":0.25,
+    "biology":0.25,
+    "physics":0.25,
+    "chemistry":0.25
+  },
+
+  "027":
+  {
+    "name":"Музеєзнавство, пам'яткознавство",
+    "ukr":0.25,
+    "math":0.25,
+    "history":0.5,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.2,
+    "chemistry":0.2
+  },
+
+  "028":
+  {
+    "name":"Менеджмент соціокультурної діяльності",
+    "ukr":0.3,
+    "math":0.4,
+    "history":0.3,
+    "english":0.3,
+    "biology":0.2,
+    "physics":0.2,
+    "chemistry":0.2
+  },
+
+  "029":
+  {
+    "name":"Інформаційна, бібліотечна та архівна справа",
+    "ukr":0.35,
+    "math":0.25,
+    "history":0.4,
+    "english":0.3,
+    "biology":0.2,
+    "physics":0.2,
+    "chemistry":0.2
+  },
+
+  "031":
+  {
+    "name":"Релігієзнавство",
+    "ukr":0.3,
+    "math":0.25,
+    "history":0.45,
+    "english":0.45,
+    "biology":0.2,
+    "physics":0.2,
+    "chemistry":0.2
+  },
+
+  "032":
+  {
+    "name":"Історія та археологія",
+    "ukr":0.25,
+    "math":0.25,
+    "history":0.5,
+    "english":0.5,
+    "biology":0.2,
+    "physics":0.2,
+    "chemistry":0.2
+  },
+
+  "033":
+  {
+    "name":"Філософія",
+    "ukr":0.35,
+    "math":0.25,
+    "history":0.4,
+    "english":0.4,
+    "biology":0.2,
+    "physics":0.2,
+    "chemistry":0.2
+  },
+
+  "034":
+  {
+    "name":"Культурологія",
+    "ukr":0.25,
+    "math":0.25,
+    "history":0.5,
+    "english":0.5,
+    "biology":0.2,
+    "physics":0.2,
+    "chemistry":0.2
+  },
+
+  "035.01":
+  {
+    "name":"Філологія (Українська мова)",
+    "ukr":0.5,
+    "math":0.25,
+    "history":0.25,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.2,
+    "chemistry":0.2
+  },
+
+  "035":
+  {
+    "name":"Філологія (Інші мови)",
+    "ukr":0.4,
+    "math":0.3,
+    "history":0.3,
+    "english":0.4,
+    "biology":0.2,
+    "physics":0.2,
+    "chemistry":0.2
+  },
+
+  "041":
+  {
+    "name":"Богослов'я",
+    "ukr":0.3,
+    "math":0.25,
+    "history":0.45,
+    "english":0.45,
+    "biology":0.2,
+    "physics":0.2,
+    "chemistry":0.2
+  },
+
+  "051":
+  {
+    "name":"Економіка",
+    "ukr":0.35,
+    "math":0.4,
+    "history":0.25,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.2,
+    "chemistry":0.2
+  },
+
+  "052":
+  {
+    "name":"Політологія",
+    "ukr":0.35,
+    "math":0.4,
+    "history":0.25,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.2,
+    "chemistry":0.2
+  },
+
+  "053":
+  {
+    "name":"Психологія",
+    "ukr":0.35,
+    "math":0.4,
+    "history":0.25,
+    "english":0.25,
+    "biology":0.4,
+    "physics":0.2,
+    "chemistry":0.2
+  },
+
+  "054":
+  {
+    "name":"Соціологія",
+    "ukr":0.35,
+    "math":0.4,
+    "history":0.25,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.2,
+    "chemistry":0.2
+  },
+
+  "061":
+  {
+    "name":"Журналістика",
+    "ukr":0.45,
+    "math":0.3,
+    "history":0.25,
+    "english":0.35,
+    "biology":0.2,
+    "physics":0.2,
+    "chemistry":0.2
+  },
+
+  "071":
+  {
+    "name":"Облік і оподаткування",
+    "ukr":0.35,
+    "math":0.4,
+    "history":0.25,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.2,
+    "chemistry":0.2
+  },
+
+    "072":
+  {
+    "name":"Фінанси, банківська справа, страхування та фондовий ринок",
+    "ukr":0.35,
+    "math":0.4,
+    "history":0.25,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.2,
+    "chemistry":0.2
+  },
+
+    "073":
+  {
+    "name":"Менеджмент",
+    "ukr":0.35,
+    "math":0.4,
+    "history":0.25,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.2,
+    "chemistry":0.2
+  },
+
+    "073":
+  {
+    "name":"Маркетинг",
+    "ukr":0.35,
+    "math":0.4,
+    "history":0.25,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.2,
+    "chemistry":0.2
+  },
+
+    "076":
+  {
+    "name":"Підприємництво та торгівля",
+    "ukr":0.35,
+    "math":0.4,
+    "history":0.25,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.2,
+    "chemistry":0.2
+  },
+
+  "081":
+  {
+    "name":"Право",
+    "ukr":0.35,
+    "math":0.25,
+    "history":0.4,
+    "english":0.4,
+    "biology":0.25,
+    "physics":0.25,
+    "chemistry":0.25
+  },
+
+    "091":
+  {
+    "name":"Біологія та біохімія",
+    "ukr":0.3,
+    "math":0.35,
+    "history":0.35,
+    "english":0.3,
+    "biology":0.5,
+    "physics":0.35,
+    "chemistry":0.35
+  },
+
+   "101":
+  {
+    "name":"Екологія",
+    "ukr":0.3,
+    "math":0.35,
+    "history":0.35,
+    "english":0.3,
+    "biology":0.4,
+    "physics":0.35,
+    "chemistry":0.4
+  },
+
+  "102":
+  {
+    "name":"Хімія",
+    "ukr":0.3,
+    "math":0.35,
+    "history":0.35,
+    "english":0.3,
+    "biology":0.35,
+    "physics":0.35,
+    "chemistry":0.5
+  },
+
+  "103":
+  {
+    "name":"Науки про Землю",
+    "ukr":0.35,
+    "math":0.4,
+    "history":0.25,
+    "english":0.3,
+    "biology":0.35,
+    "physics":0.4,
+    "chemistry":0.4
+  },
+
+  "104":
+  {
+    "name":"Фізика та астрономія",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.3,
+    "biology":0.25,
+    "physics":0.5,
+    "chemistry":0.3
+  },
+
+  "105":
+  {
+    "name":"Прикладна фізика та наноматеріали",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.3 ,
+    "biology":0.25,
+    "physics":0.5,
+    "chemistry":0.4
+  },
+
+  "106":
+  {
+    "name":"Географія",
+    "ukr":0.3,
+    "math":0.35,
+    "history":0.35,
+    "english":0.35,
+    "biology":0.35,
+    "physics":0.35,
+    "chemistry":0.35
+  },
+
+  "111":
+  {
+    "name":"Математика",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.2,
+    "biology":0.2,
+    "physics":0.4,
+    "chemistry":0.2
+  },
+
+  "112":
+  {
+    "name":"Статистика",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.2,
+    "biology": 0.2,
+    "physics":0.4,
+    "chemistry":0.2
+  },
+
+  "113":
+  {
+    "name":"Прикладна математика",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.3,
+    "biology":0.2,
+    "physics":0.4,
+    "chemistry":0.2
+  },
+
+  "121": {
+    "name":"Інженерія програмного забезпечення",
+    "ukr":0.3,
+    "math": 0.5,
+    "history": 0.2,
+    "english": 0.3,
+    "biology": 0.2,
+    "physics": 0.4,
+    "chemistry": 0.2
+  },
+
+  "122": {
+    "name": "Комп'ютерні науки",
+    "ukr":0.3,
+    "math":0.5,
+    "history": 0.2,
+    "english": 0.3,
+    "biology": 0.2,
+    "physics": 0.4,
+    "chemistry": 0.2
+  },
+
+  "123": {
+    "name": "Комп'ютерна інженерія",
+    "ukr":0.3,
+    "math":0.5,
+    "history": 0.2,
+    "english": 0.3,
+    "biology": 0.2,
+    "physics": 0.4,
+    "chemistry": 0.2
+  },
+
+  "124": {
+    "name": "Системний аналіз",
+    "ukr":0.3,
+    "math":0.5,
+    "history": 0.2,
+    "english": 0.3,
+    "biology": 0.2,
+    "physics": 0.4,
+    "chemistry": 0.2
+  },
+
+  "125": {
+    "name": "Кібербезпека та захист інформації",
+    "ukr":0.3,
+    "math":0.5,
+    "history": 0.2,
+    "english": 0.3,
+    "biology": 0.2,
+    "physics": 0.4,
+    "chemistry": 0.2
+  },
+
+  "126": {
+    "name": "Інформаційні системи та технології",
+    "ukr":0.3,
+    "math":0.5,
+    "history": 0.2,
+    "english": 0.3,
+    "biology": 0.2,
+    "physics": 0.4,
+    "chemistry": 0.2
+  },
+
+  "131": {
+    "name": "Прикладна механіка",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.5,
+    "chemistry":0.2
+  },
+
+  "132": {
+    "name": "Матеріалознавство",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.5,
+    "chemistry":0.5
+  },
+
+  "133": {
+    "name": "Галузеве машинобудування",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.5,
+    "chemistry":0.2
+  },
+
+  "134": {
+    "name": "Авіайійна та ракетно-космічна техніка",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.5,
+    "chemistry":0.2
+  },
+
+  "135": {
+    "name": "Суднобудування",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.5,
+    "chemistry":0.2
+  },
+
+  "136": {
+    "name": "Металургія",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.5,
+    "chemistry":0.5
+  },
+
+  "141": {
+    "name": "Електроенергетика, електротехніка та електромеханіка",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.5,
+    "chemistry":0.2
+  },
+
+  "142": {
+    "name": "Енергетичне машинобудування",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.5,
+    "chemistry":0.2
+  },
+
+  "143": {
+    "name": "Атомна енергетика",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.5,
+    "chemistry":0.5
+  },
+
+  "144": {
+    "name": "Теплоенергетика",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.5,
+    "chemistry":0.2
+  },
+
+  "145": {
+    "name": "Відновлювальні джерела енергії та гідроенергетика",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.5,
+    "chemistry":0.2
+  },
+
+  "161": {
+    "name": "Хімічні технології та інженерія",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.25,
+    "biology":0.3,
+    "physics":0.2,
+    "chemistry":0.5
+  },
+
+  "162": {
+    "name": "Біотехнології та біоінженерія",
+    "ukr":0.35,
+    "math":0.35,
+    "history":0.3,
+    "english":0.3,
+    "biology":0.5,
+    "physics":0.5,
+    "chemistry":0.5
+  },
+
+  "163": {
+    "name": "Біомедична інженерія",
+    "ukr":0.35,
+    "math":0.35,
+    "history":0.3,
+    "english":0.3,
+    "biology":0.5,
+    "physics":0.5,
+    "chemistry":0.5
+  },
+
+  "171": {
+    "name": "Електроніка",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.5,
+    "chemistry":0.2
+  },
+
+  "172": {
+    "name": "Електронні комунікації та радіотехніка",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.5,
+    "chemistry":0.2
+  },
+
+  "173": {
+    "name": "Авіоніка",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.5,
+    "chemistry":0.2
+  },
+
+  "174": {
+    "name": "Автоматизація, комп'ютерно-інтегровані технології та робототехніка",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.5,
+    "chemistry":0.2
+  },
+
+  "175": {
+    "name": "Інформаційно-вимірювальні технології",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.5,
+    "chemistry":0.2
+  },
+
+  "176": {
+    "name": "Мікро- та наносистемна техніка",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.5,
+    "chemistry":0.2
+  },
+
+  "181": {
+    "name": "Харчові технології",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.3,
+    "biology":0.2,
+    "physics":0.5,
+    "chemistry":0.5
+  },
+
+  "182": {
+    "name": "Технології легкої промисловості",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.5,
+    "chemistry":0.5
+  },
+
+  "183": {
+    "name": "Технології захисту навколишнього середовища",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.25,
+    "biology":0.5,
+    "physics":0.5,
+    "chemistry":0.5
+  },
+
+  "184": {
+    "name": "Гірництво",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.25,
+    "biology":0.5,
+    "physics":0.5,
+    "chemistry":0.5
+  },
+
+  "185": {
+    "name": "Нафтогазова інженерія та технології",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.25,
+    "biology":0.5,
+    "physics":0.5,
+    "chemistry":0.5
+  },
+
+  "186": {
+    "name": "Видавництво та поліграфія",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.3,
+    "biology":0.2,
+    "physics":0.5,
+    "chemistry":0.5
+  },
+
+  "187": {
+    "name": "Деревообробні та меблеві технології",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.25,
+    "biology":0.5,
+    "physics":0.5,
+    "chemistry":0.5
+  },
+
+  "192": {
+    "name": "Будівництво та цивільна інженерія",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.5,
+    "chemistry":0.2
+  },
+
+  "193": {
+    "name": "Геодезія та землеустрій",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.5,
+    "chemistry":0.2
+  },
+
+  "194": {
+    "name": "Гідротехнічне будівництво, водна інженерія та водні технології",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.5,
+    "chemistry":0.2
+  },
+
+  "201": {
+    "name": "Агрономія",
+    "ukr":0.4,
+    "math":0.3,
+    "history":0.3,
+    "english":0.35,
+    "biology":0.5,
+    "physics":0.3,
+    "chemistry":0.5
+  },
+
+  "202": {
+    "name": "Захист і карантин рослин",
+    "ukr":0.4,
+    "math":0.3,
+    "history":0.3,
+    "english":0.35,
+    "biology":0.5,
+    "physics":0.3,
+    "chemistry":0.5
+  },
+
+  "203": {
+    "name": "Садівництво, плодоовочівництво та виноградарство",
+    "ukr":0.4,
+    "math":0.3,
+    "history":0.3,
+    "english":0.35,
+    "biology":0.5,
+    "physics":0.3,
+    "chemistry":0.5
+  },
+
+  "204": {
+    "name": "Технологія виробництва і переробки продукції тваринництва",
+    "ukr":0.4,
+    "math":0.3,
+    "history":0.3,
+    "english":0.35,
+    "biology":0.5,
+    "physics":0.5,
+    "chemistry":0.5
+  },
+
+  "205": {
+    "name": "Лісове господарство",
+    "ukr":0.35,
+    "math":0.4,
+    "history":0.25,
+    "english":0.35,
+    "biology":0.5,
+    "physics":0.5,
+    "chemistry":0.3
+  },
+
+  "206": {
+    "name": "Садово-паркове господарство",
+    "ukr":0.35,
+    "math":0.4,
+    "history":0.25,
+    "english":0.35,
+    "biology":0.5,
+    "physics":0.4,
+    "chemistry":0.4
+  },
+
+  "207": {
+    "name": "Водні біоресурси та аквакультура",
+    "ukr":0.4,
+    "math":0.3,
+    "history":0.3,
+    "english":0.35,
+    "biology":0.5,
+    "physics":0.5,
+    "chemistry":0.5
+  },
+
+  "208": {
+    "name": "Агроінженерія",
+    "ukr":0.3,
+    "math":0.4,
+    "history":0.3,
+    "english":0.35,
+    "biology":0.5,
+    "physics":0.5,
+    "chemistry":0.3
+  },
+
+  "211": {
+    "name": "Ветеринарна медицина",
+    "ukr":0.35,
+    "math":0.4,
+    "history":0.25,
+    "english":0.3,
+    "biology":0.5,
+    "physics":0.5,
+    "chemistry":0.3
+  },
+
+  "221": {
+    "name": "Стоматологія",
+    "ukr":0.35,
+    "math":0.4,
+    "history":0.25,
+    "english":0.25,
+    "biology":0.5,
+    "physics":0.5,
+    "chemistry":0.35
+  },
+
+  "222": {
+    "name": "Медицина",
+    "ukr":0.35,
+    "math":0.4,
+    "history":0.25,
+    "english":0.25,
+    "biology":0.5,
+    "physics":0.5,
+    "chemistry":0.35
+  },
+
+  "223": {
+    "name": "Медсестринство",
+    "ukr":0.35,
+    "math":0.4,
+    "history":0.25,
+    "english":0.25,
+    "biology":0.5,
+    "physics":0.5,
+    "chemistry":0.35
+  },
+
+  "224": {
+    "name": "Технології медичної діагностики та лікування",
+    "ukr":0.35,
+    "math":0.4,
+    "history":0.25,
+    "english":0.25,
+    "biology":0.5,
+    "physics":0.5,
+    "chemistry":0.35
+  },
+
+  "225": {
+    "name": "Медична психологія",
+    "ukr":0.35,
+    "math":0.4,
+    "history":0.25,
+    "english":0.25,
+    "biology":0.5,
+    "physics":0.5,
+    "chemistry":0.35
+  },
+
+  "226": {
+    "name": "Фармація, промислова фармація",
+    "ukr":0.35,
+    "math":0.4,
+    "history":0.25,
+    "english":0.25,
+    "biology":0.5,
+    "physics":0.5,
+    "chemistry":0.5
+  },
+
+  "227": {
+    "name": "Терапія та реабілітація",
+    "ukr":0.35,
+    "math":0.4,
+    "history":0.25,
+    "english":0.25,
+    "biology":0.5,
+    "physics":0.5,
+    "chemistry":0.35
+  },
+
+  "228": {
+    "name": "Педіатрія",
+    "ukr":0.35,
+    "math":0.4,
+    "history":0.25,
+    "english":0.25,
+    "biology":0.5,
+    "physics":0.5,
+    "chemistry":0.35
+  },
+
+  "229": {
+    "name": "Громадське здоров'я",
+    "ukr":0.35,
+    "math":0.4,
+    "history":0.25,
+    "english":0.25,
+    "biology":0.5,
+    "physics":0.5,
+    "chemistry":0.35
+  },
+
+  "231": {
+    "name": "Соціальна робота",
+    "ukr":0.35,
+    "math":0.4,
+    "history":0.25,
+    "english":0.25,
+    "biology":0.25,
+    "physics":0.25,
+    "chemistry":0.25
+  },
+
+  "232": {
+    "name": "Соціальне забезпечення",
+    "ukr":0.35,
+    "math":0.4,
+    "history":0.25,
+    "english":0.25,
+    "biology":0.25,
+    "physics":0.25,
+    "chemistry":0.25
+  },
+
+  "241": {
+    "name": "Готельно-ресторанна справа",
+    "ukr":0.4,
+    "math":0.3,
+    "history":0.3,
+    "english":0.5,
+    "biology":0.3,
+    "physics":0.25,
+    "chemistry":0.3
+  },
+
+  "242": {
+    "name": "Туризм і рекреація",
+    "ukr":0.4,
+    "math":0.3,
+    "history":0.3,
+    "english":0.5,
+    "biology":0.35,
+    "physics":0.25,
+    "chemistry":0.25
+  },
+
+  "256": {
+    "name": "Національна безпека (за окремими сферами забезпечення і видами діяльності)",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.25,
+    "biology":0.2,
+    "physics":0.5,
+    "chemistry":0.2
+  },
+
+  "257": {
+    "name": "Управління інформаційною безпекою",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.3,
+    "biology":0.2,
+    "physics":0.4,
+    "chemistry":0.2
+  },
+
+  "261": {
+    "name": "Пожежна безпека",
+    "ukr":0.35,
+    "math":0.4,
+    "history":0.25,
+    "english":0.25,
+    "biology":0.3,
+    "physics":0.35,
+    "chemistry":0.35
+  },
+
+  "262": {
+    "name": "Правоохоронна діяльність",
+    "ukr":0.35,
+    "math":0.3,
+    "history":0.35,
+    "english":0.35,
+    "biology":0.3,
+    "physics":0.25,
+    "chemistry":0.25
+  },
+
+   "263": {
+    "name": "Цивільна безпека",
+    "ukr":0.35,
+    "math":0.4,
+    "history":0.25,
+    "english":0.25,
+    "biology":0.35,
+    "physics":0.35,
+    "chemistry":0.35
+  },
+
+   "271": {
+    "name": "Морський та внутрішній водний транспорт",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.5,
+    "biology":0.2,
+    "physics":0.5,
+    "chemistry":0.2
+  },
+
+   "272": {
+    "name": "Авіаційний транспорт",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.5,
+    "biology":0.2,
+    "physics":0.5,
+    "chemistry":0.2
+  },
+
+   "273": {
+    "name": "Залізничний транспорт",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.5,
+    "biology":0.2,
+    "physics":0.5,
+    "chemistry":0.2
+  },
+
+   "274": {
+    "name": "Автомобільний транспорт",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.5,
+    "biology":0.2,
+    "physics":0.5,
+    "chemistry":0.2
+  },
+
+   "275": {
+    "name": "Транспортні технології",
+    "ukr":0.3,
+    "math":0.5,
+    "history":0.2,
+    "english":0.5,
+    "biology":0.2,
+    "physics":0.5,
+    "chemistry":0.2
+  },
+
+   "281": {
+    "name": "Публічне управління та адміністрування",
+    "ukr":0.3,
+    "math":0.4,
+    "history":0.3,
+    "english":0.5,
+    "biology":0.2,
+    "physics":0.2,
+    "chemistry":0.2
+  },
+
+   "291": {
+    "name": "Міжнародні відносини, суспільні комунікації та регіональні студії",
+    "ukr":0.4,
+    "math":0.3,
+    "history":0.3,
+    "english":0.5,
+    "biology":0.2,
+    "physics":0.2,
+    "chemistry":0.2
+  },
+
+   "292": {
+    "name": "Міжнародні економічні відносини",
+    "ukr":0.3,
+    "math":0.4,
+    "history":0.3,
+    "english":0.5,
+    "biology":0.2,
+    "physics":0.2,
+    "chemistry":0.2
+  },
+
+   "293": {
+    "name": "Міжнародне право",
+    "ukr":0.4,
+    "math":0.2,
+    "history":0.4,
+    "english":0.5,
+    "biology":0.2,
+    "physics":0.2,
+    "chemistry":0.2
+  }
+}
