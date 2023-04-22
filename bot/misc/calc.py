@@ -25,5 +25,5 @@ def calc_score(reg, spec, dict_scores):
     if score > 200:
         score = 200
 
-    return ("{:.2f}".format(score))
+    return ["{:.2f}".format(score),galuz,reg]
 

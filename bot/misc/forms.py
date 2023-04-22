@@ -9,3 +9,9 @@ class Form(StatesGroup):
     welcome = State()
     unsub = State()
     feedback = State()
+    spec_set = State()
+    region_set = State()
+
+    admin = State()
+    admin_sending = State()
+    admin_sending_1 = State()

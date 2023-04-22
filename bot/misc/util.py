@@ -12,18 +12,19 @@ def nmt_mark_validation(value):
     return [1,"OK"]
 
 
-def spec_list_validation(value):
-    mark_list = None
+def spec_validation(value):
+    text = "Будь ласка, перевірте код спеціальності <a href=\"https://telegra.ph/PEREL%D0%86K-galuzej-znan-%D1%96-spec%D1%96alnostej-za-yakimi-zd%D1%96jsnyuyetsya-p%D1%96dgotovka-zdobuvach%D1%96v-vishchoi-osv%D1%96ti-04-18|\">тут</a>. Має бути 3 цифри. Наприклад: <b>073</b>"
     try:
-        mark_list = re.split("[, ]+", value)
-        if len(mark_list) == 0:
-            raise ValueError("Пустий список спеціальностей")
         with open(r"D:\HneuMark\AiogramTemplate\bot\koef.json", 'r') as file:
             dictionary = json.load(file)
-        for elem in mark_list:
-            if elem not in dictionary:
-                return f"Некоректо введено спеціальність: {elem}"
-    except Exception as ex:
-        return "Некоректно введено спеціальність"
+        if value not in dictionary:
+            return text
+    except:
+        return text
 
-    return mark_list
+    return "OK"
+
+
+def spec_porig_check(value):
+
+    return "Тут буде можливе повідомлення про підвищений пороговий бал"

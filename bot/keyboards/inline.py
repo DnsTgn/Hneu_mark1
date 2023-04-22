@@ -25,7 +25,7 @@ def get_unsub_ikb():
 
 def get_feedback_ikb():
     feedback_ikb = InlineKeyboardMarkup(row_width=1)
-    button1 = InlineKeyboardButton(text="Вийти",
+    button1 = InlineKeyboardButton(text="Відмінити",
                                    callback_data="out")
     feedback_ikb.add(button1)
     return feedback_ikb
@@ -45,3 +45,40 @@ def get_add_subj_ikb():
                                callback_data='history')
     add_subj_ikb.add(ib1, ib2, ib3, ib4, ib5)
     return add_subj_ikb
+
+def get_regions_ikb():
+    ikb = InlineKeyboardMarkup(row_width=1)
+
+    ib1 = InlineKeyboardButton(text="Миколаївська, Сумська, Харківська, Чернігівська області",
+                               callback_data='reg_first_group')
+    ib2 = InlineKeyboardButton(text="Дніпропетровська, Запорізька, Одеська, Полтавська області",
+                               callback_data='reg_second_group')
+    ib3 = InlineKeyboardButton(text="Інші області",
+                               callback_data='reg_other_group')
+    ib4 = InlineKeyboardButton(text="Пропустити",
+                               callback_data='skip')
+    ikb.add(ib1, ib2, ib3,ib4)
+    return ikb
+def get_admin_menu_ikb():
+    menu_ikb = InlineKeyboardMarkup(row_width=2)
+    button1 = InlineKeyboardButton(text= "Розіслати повідомлення",
+                                   callback_data="sending")
+    button2 = InlineKeyboardButton(text= "Статистика",
+                                   callback_data="stats")
+    button3 = InlineKeyboardButton(text= "Кількість людей",
+                                   callback_data="users_amount")
+    button4 = InlineKeyboardButton(text= "Вийти з адм. панелі",
+                                   callback_data="admin_out")
+    menu_ikb.add(button1,button2,button3,button4)
+    return menu_ikb
+
+def get_admin_sending():
+    menu_ikb = InlineKeyboardMarkup(row_width=2)
+    button1 = InlineKeyboardButton(text= "Редагувати",
+                                   callback_data="edit_send_message")
+    button2 = InlineKeyboardButton(text= "Розіслати",
+                                   callback_data="START_SENDING")
+    button3 = InlineKeyboardButton(text= "Скасувати",
+                                   callback_data="break_sending")
+    menu_ikb.add(button1,button2,button3)
+    return menu_ikb

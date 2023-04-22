@@ -56,7 +56,13 @@ def add_mark(subj,value,key):
         print(f"[INFO] - Оцінка з {subj} - {value} була додана для користувача з ID : {key}")
     except:
         print(f"[WARN] - Оцінка з {subj} - {value} НЕ була додана для користувача з ID : {key}!")
-
+def add_spec_amount(spec):
+    try:
+        cur.execute(f"UPDATE spec_list SET amount = amount + 1 WHERE spec_code='{spec}';")
+        con.commit()
+        print(f"[INFO] - до спеціальності {spec} було додано 1 ")
+    except:
+        print(f"[WARN] - до спеціальності {spec} НЕ було додано 1")
 
 def get_add_subj(key):
     cur.execute(f"SELECT additional_subj_name FROM users WHERE user_id = {key}")
@@ -69,3 +75,23 @@ def get_all_info(key):
     result = cur.fetchone()
     print(f"for ID:{key}, all info is {result}")
     return list(result)
+
+def get_users_for_sending():
+    cur.execute(f"SELECT user_id FROM users WHERE status = true")
+    results = cur.fetchall()
+    column_values = [result[0] for result in results]
+    print(column_values)
+    return list(column_values)
+def get_users_amount():
+    cur.execute(f"SELECT count(user_id) FROM users WHERE 1=1")
+    result = cur.fetchone()
+    print(f"В базі є {result[0]} користувачів")
+    return result[0]
+
+def get_stats():
+    cur.execute(f"SELECT * FROM spec_list")
+    res = cur.fetchall()
+    result = []
+    for r in res:
+        result.append([r[0],r[1]])
+    return result
