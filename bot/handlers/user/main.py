@@ -26,9 +26,7 @@ async def feedback_answer(message_or_callback,state: FSMContext):
     await state.reset_state()
     if isinstance(message_or_callback, types.Message):
         text = "Дякуємо за зворотній зв'язок!"
-        text1 = f"@{message_or_callback.from_user.username} Залишив(ла) фідбек:\n" \
-               f"{message_or_callback.text}"
-        await message_or_callback.bot.send_message(chat_id=config.admin_chat_id,text = text1)
+        await message_or_callback.bot.forward_message(chat_id=config.admin_chat_id,from_chat_id=message_or_callback.chat.id,message_id=message_or_callback.message_id)
         await message_or_callback.bot.send_message(chat_id=message_or_callback.chat.id, text=text)
     elif isinstance(message_or_callback, types.CallbackQuery):
         if message_or_callback.data == "out":
@@ -36,7 +34,7 @@ async def feedback_answer(message_or_callback,state: FSMContext):
                                                                  message_id=message_or_callback.message.message_id)
 async def help(message_or_callback):
     print("[INFO] - Викликана функція help")
-    text = "Дякуємо, що скористалися нашим ботом, який розроблений факультетом ІТ у <a href =\"www.hneu.edu.ua\">ХНЕУ імені Семена Кузнеця</a>.\n\nМетодика розрахунку конкурсного балу <a href = \"https://telegra.ph/Metodika-rozrahunku-04-18\">тут</a>.\n<a href=\"https://telegra.ph/Pro-nas-04-18\">Про нас</a>\n\nЯкщо є запитання:\ntelegram: @KhNUE\nkuznets.event@gmail.com"
+    text = "Дякуємо, що скористалися нашим ботом, розробленим факультетом ІТ у <a href =\"www.hneu.edu.ua\">ХНЕУ імені Семена Кузнеця</a>.\n\nМетодика розрахунку конкурсного балу <a href = \"https://telegra.ph/Metodika-rozrahunku-04-18\">тут</a>.\n<a href=\"https://telegra.ph/Pro-nas-04-18\">Про нас</a>\n\nЯкщо є запитання:\ntelegram: @KhNUE\nkuznets.event@gmail.com"
     if isinstance(message_or_callback,types.Message):
         await message_or_callback.bot.send_message(chat_id=message_or_callback.chat.id, text = text,disable_web_page_preview=True)
         await message_or_callback.bot.delete_message(chat_id=message_or_callback.chat.id,message_id=message_or_callback.message_id,)
@@ -79,7 +77,7 @@ async def welcome_message(message: types.Message):
     db_con.add_id(message.from_user.id)
     db_con.status_true(message.from_user.id)
     await Form.welcome.set()
-    text = "Привіт! Я допоможу розрахувати конкурсний бал для вступу. Це дасть змогу оцінити, на яку спеціальність у вас кращі шанси для вступу!\n\nЦей бот розроблено в <a href = \"www.hneu.edu.ua\">Харківському національному економічному університеті імені Семена Кузнеця</a>!"
+    text = "😁Привіт! Я допоможу розрахувати конкурсний бал для вступу. Це дасть змогу оцінити, на яку спеціальність у вас кращі шанси для вступу!\n\nЦей бот розроблено в <a href = \"www.hneu.edu.ua\">Харківському національному економічному університеті імені Семена Кузнеця</a>!"
     await bot.send_message(chat_id= message.chat.id,text =text,disable_web_page_preview=True)
     await menu(message)
 
@@ -87,6 +85,7 @@ async def menu(message_or_callback):
     print("[INFO] - Викликана функція menu")
     text = "Оберіть команду"
     ikb = inline.get_menu_ikb()
+    #await state.reset_state()
     if isinstance(message_or_callback,types.Message):
         await message_or_callback.bot.send_message(chat_id= message_or_callback.chat.id,
                                                 text=text,
@@ -103,7 +102,7 @@ def register_user_handlers(dp: Dispatcher):
     dp.register_message_handler(help, commands=['help'], state="*")
     dp.register_message_handler(unsub_question, commands= ["unsub"], state="*")
     dp.register_message_handler(feedback, commands=['feedback'], state="*")
-    dp.register_message_handler(feedback_answer, state=Form.feedback)
+    dp.register_message_handler(feedback_answer,content_types=types.ContentTypes.ANY, state=Form.feedback)
     dp.register_message_handler(calculate_foo.math_question, commands=['calculate'], state="*")
     dp.register_message_handler(calculate_foo.math_answer, state=Form.math_ent)
     dp.register_message_handler(calculate_foo.ukr_answer, state=Form.ukr_ent)

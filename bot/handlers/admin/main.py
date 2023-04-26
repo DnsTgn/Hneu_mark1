@@ -11,6 +11,7 @@ from aiogram.dispatcher import FSMContext
 
 from AiogramTemplate.bot.database.methods import db_con as db
 from AiogramTemplate.bot.handlers.admin.util import stats_file
+from AiogramTemplate.bot.handlers.user.main import menu
 from AiogramTemplate.bot.keyboards import inline
 from AiogramTemplate.bot.misc.config import admin_chat_id as ADMINS
 from AiogramTemplate.bot.misc.forms import Form
@@ -25,6 +26,7 @@ async def admin_menu(message_or_callback):
             ikb = inline.get_admin_menu_ikb()
             await message_or_callback.bot.send_message(chat_id=message_or_callback.chat.id,text = text,reply_markup=ikb)
         else:
+            print(message_or_callback.chat.id,ADMINS)
             print("NO")
     elif isinstance(message_or_callback,types.CallbackQuery):
         if message_or_callback.message.chat.id == ADMINS:
@@ -38,6 +40,7 @@ async def admin_menu(message_or_callback):
 
 async def sending_quest(call:types.CallbackQuery,state:FSMContext):
     print("[INFO] - викликано функцію sending_quest")
+    await call.bot.delete_message(chat_id=call.message.chat.id, message_id=call.message.message_id)
     await Form.admin_sending.set()
     text ="Введіть повідомлення для розсилки"
     await call.bot.send_message(chat_id=call.message.chat.id,text = text)
@@ -59,6 +62,8 @@ async def sending_answer(message: types.Message):
 
 async def sending_answer_1(call: types.CallbackQuery):
     print("[INFO] - викликано функцію sending_answer_1")
+
+
     if call.data == "edit_send_message":
         await call.bot.send_message(chat_id=call.message.chat.id,
                                        text="Будь ласка, введіть оновлене повідомлення")
@@ -68,6 +73,8 @@ async def sending_answer_1(call: types.CallbackQuery):
     elif call.data == "break_sending":
         await call.bot.send_message(chat_id=call.message.chat.id,text="Розсилку відмінено")
         await admin_menu(call)
+
+
 
 async def sending(call:types.CallbackQuery):
     await Form.admin.set()
@@ -82,8 +89,11 @@ async def sending(call:types.CallbackQuery):
         async with state.proxy() as data:
             message = data['message']
 
+        count_db_all = db.get_users_amount()
         count_bd = len(users)
         count_fact = 0
+        count_blocked = 0
+        count_unsub = count_db_all - count_bd
 
         for member in users:
             try:
@@ -91,6 +101,7 @@ async def sending(call:types.CallbackQuery):
                 count_fact+=1
             except exceptions.BotBlocked:
                 print(f"Bot blocked by {member}")
+                count_blocked+=1
             except exceptions.ChatNotFound:
                 print(f"Chat not found for {member}")
             except exceptions.RetryAfter as e:
@@ -98,7 +109,7 @@ async def sending(call:types.CallbackQuery):
                 await asyncio.sleep(e.timeout)
             except exceptions.TelegramAPIError:
                 print(f"Failed to send message to {member}")
-        await call.bot.send_message(chat_id=call.message.chat.id,text = f"Всього користувачів для розсилки в базі даних: {count_bd}\nВсього розіслано: {count_fact}")
+        await call.bot.send_message(chat_id=call.message.chat.id,text = f"Всього користувачів в базі даних (за весь час) :{count_db_all}\nВсього користувачів для розсилки в базі даних (ті що не відписались): {count_bd}\nКористувачів які заблокували та видалили бота: {count_blocked}\nВсього розіслано: {count_fact}\n\n<i>Якщо кількість розісланих повідомлень = 0, це може бути пов'язано з неправильним форматом повідомлення розсилки, слід розсилати лише текс, допускаються посилання у ньому</i>")
     except exceptions.TelegramAPIError as e:
         print(f"Failed to get chat members. Error: {e}")
     await admin_menu(call)
@@ -114,15 +125,22 @@ async def stats(call:types.CallbackQuery):
     file = types.InputFile(path_or_bytesio=file_bt, filename="stat.xlsx")
     await call.bot.send_document(chat_id=call.message.chat.id,document=file)
 
+
+async def admin_out(call:types.CallbackQuery):
+    await call.bot.delete_message(chat_id=call.message.chat.id,message_id=call.message.message_id)
+    await menu(call)
+
+
 def register_admin_handlers(dp: Dispatcher):
     #message -------------------------------------------------
-    dp.register_message_handler(admin_menu,commands=['admin'],state="*")
+    dp.register_message_handler(admin_menu,commands=['admin','a','adm','administrator'],state="*")
     dp.register_message_handler(sending_answer, content_types=types.ContentTypes.ANY, state= Form.admin_sending)
-
 
     #callback ------------------------------------------------
     dp.register_callback_query_handler(sending_quest, lambda call: call.data == "sending",state=Form.admin)
     dp.register_callback_query_handler(users_amount, lambda call: call.data == "users_amount", state=Form.admin)
+    dp.register_callback_query_handler(admin_out, lambda call: call.data == "admin_out", state=Form.admin)
+
     dp.register_callback_query_handler(sending_answer_1, lambda call: call.data in ["edit_send_message","START_SENDING","break_sending"], state=Form.admin_sending_1)
     dp.register_callback_query_handler(stats, lambda call: call.data == "stats", state=Form.admin)
 

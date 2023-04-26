@@ -1,5 +1,7 @@
 import io
+
 from datetime import datetime
+
 
 from openpyxl import Workbook
 import json
@@ -11,11 +13,11 @@ async def stats_file():
     with open(r"D:\HneuMark\AiogramTemplate\bot\koef.json", 'r', encoding="utf-8") as file:
         dictionary = json.load(file)
     for r in res:
-        r[0] = dictionary[r[0]]['name']
-        amount+=r[1]
+        amount += r[1]
+        r.insert(1,dictionary[r[0]]['name'])
 
     amount_users = db.get_users_amount()
-
+    res.insert(0,[])
     res.insert(0,["Загалом розрахунків",amount])
     res.insert(0, ["Кількість користувачів бота", amount_users])
     res.insert(0, ["ДАТА|ЧАС", datestamp])
@@ -30,3 +32,4 @@ async def stats_file():
 
     # Повертаємо байт-стрічку з файлом xlsx
     return file_buffer
+

@@ -82,6 +82,12 @@ def get_users_for_sending():
     column_values = [result[0] for result in results]
     print(column_values)
     return list(column_values)
+def get_users():
+    cur.execute(f"SELECT user_id FROM users WHERE 1=1")
+    results = cur.fetchall()
+    column_values = [result[0] for result in results]
+    print(column_values)
+    return list(column_values)
 def get_users_amount():
     cur.execute(f"SELECT count(user_id) FROM users WHERE 1=1")
     result = cur.fetchone()

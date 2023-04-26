@@ -63,9 +63,9 @@ def get_admin_menu_ikb():
     menu_ikb = InlineKeyboardMarkup(row_width=2)
     button1 = InlineKeyboardButton(text= "Розіслати повідомлення",
                                    callback_data="sending")
-    button2 = InlineKeyboardButton(text= "Статистика",
+    button2 = InlineKeyboardButton(text= "Надай файл зі статистикою",
                                    callback_data="stats")
-    button3 = InlineKeyboardButton(text= "Кількість людей",
+    button3 = InlineKeyboardButton(text= "Скільки підписників у бота?",
                                    callback_data="users_amount")
     button4 = InlineKeyboardButton(text= "Вийти з адм. панелі",
                                    callback_data="admin_out")

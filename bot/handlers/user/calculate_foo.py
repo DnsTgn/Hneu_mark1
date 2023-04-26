@@ -10,7 +10,7 @@ from AiogramTemplate.bot.misc import util as valid, config, calc
 async def math_question(message_or_callback):
     print("[INFO] - Викликана функція math_question")
     await Form.math_ent.set()
-    text = "Будь ласка, уведіть цифрою отримані бали на НМТ з математики від 100 до 200 балів. Наприклад, <b>189</b>"
+    text = "Будь ласка, уведіть цифрою отримані бали на НМТ з математики від 100 до 200 балів, наприклад, <b>189</b>"
 
     if isinstance(message_or_callback,types.Message):
         await message_or_callback.bot.send_message(chat_id=message_or_callback.chat.id,text =text)
@@ -31,7 +31,7 @@ async def math_answer(message:types.Message):
 async def ukr_question(message:types.Message):
     print("[INFO] - Викликана функція urk_question")
     await Form.ukr_ent.set()
-    text = "Будь ласка, уведіть цифрою отримані бали на НМТ з української мови від 100 до 200 балів. Наприклад, <b>175</b>"
+    text = "Будь ласка, уведіть цифрою отримані бали на НМТ з української мови від 100 до 200 балів, наприклад, <b>175</b>"
     await message.bot.send_message(chat_id=message.chat.id, text=text)
 
 
@@ -61,7 +61,7 @@ async def add_subj_answer(call:types.CallbackQuery):
 async def add_subj_mark_quest(call:types.CallbackQuery):
     print("[INFO] - Викликана функція add_subj_mark_answer")
     await Form.add_ent.set()
-    text = f"Будь ласка, уведіть цифрою отримані бали на НМТ з {config.subjects[call.data]} від 100 до 200 балів. Наприклад, <b>199</b>"
+    text = f"Будь ласка, уведіть цифрою отримані бали на НМТ з {config.subjects[call.data]} від 100 до 200 балів, наприклад, <b>199</b>"
     await call.bot.edit_message_text(chat_id=call.message.chat.id,message_id=call.message.message_id,text=text)
 
 async def add_subj_mark_answer(message:types.Message):
@@ -78,7 +78,7 @@ async def add_subj_mark_answer(message:types.Message):
 async def spec_set_question(message:types.Message):
     print("[INFO] - Викликана функція spec_set_question")
     await Form.spec_set.set()
-    text = "Уведіть код спеціальності, для якої потрібно розрахувати конкурсний бал. Наприклад: 051\n\nПодивитися всі коди спеціальностей <a href=\"https://telegra.ph/PEREL%D0%86K-galuzej-znan-%D1%96-spec%D1%96alnostej-za-yakimi-zd%D1%96jsnyuyetsya-p%D1%96dgotovka-zdobuvach%D1%96v-vishchoi-osv%D1%96ti-04-18\">тут</a>."
+    text = "Уведіть код спеціальності, для якої потрібно розрахувати конкурсний бал, наприклад: 051\n\nПодивитися всі коди спеціальностей <a href=\"https://telegra.ph/PEREL%D0%86K-galuzej-znan-%D1%96-spec%D1%96alnostej-za-yakimi-zd%D1%96jsnyuyetsya-p%D1%96dgotovka-zdobuvach%D1%96v-vishchoi-osv%D1%96ti-04-18\">тут</a>."
     await message.bot.send_message(chat_id=message.chat.id,text= text,disable_web_page_preview=True)
 
 async def spec_set_answer(message:types.Message):
@@ -104,7 +104,8 @@ async def check_spec(message:types.Message):
     if check == "NO":
         pass
     else:
-        await message.bot.send_message(chat_id=message.chat.id,text=check)
+        text = f"На цю спеціальність конкурсний бал для вступу на основі повної загальної середньої освіти не може бути менше ніж {check}. Якщо у вас конкурсний бал буде меншим, оберіть іншу спеціальність "
+        await message.bot.send_message(chat_id=message.chat.id,text=text)
     await region_question(message)
 
 
@@ -151,6 +152,6 @@ async def calculate(call:types.CallbackQuery):
 async def print_KB(call:types.CallbackQuery,res,state: FSMContext):
     print("[INFO] - Викликана функція print_KB")
     text = f"На підставі введених даних з урахуванням:\nГалузевого коефіцієнта ={res[1]}\nРегіонального коефіцієнта ={res[2]}\nВаш конкурсний бал становить: <b>{res[0]}</b>\n\nБудь ласка, перевірте цю інформацію в приймальній комісії, оскільки ми не несемо відповідальності за коректність уведених даних та розрахунку.\n\nДякуємо, що скористалися нашим ботом!\nРозроблено факультетом ІТ у Харківському національному економічному університеті імені Семена Кузнеця"
-    tex = f"Для вибраної спеціальності галузевий коеф ={res[1]}. для вибраного регіону, регіональний коеф ={res[2]}.\nТож ваш бал є:<b>{res[0]}</b>"
+    #tex = f"Для вибраної спеціальності галузевий коеф ={res[1]}. для вибраного регіону, регіональний коеф ={res[2]}.\nТож ваш бал є:<b>{res[0]}</b>"
     await call.bot.send_message(chat_id=call.message.chat.id,text=text)
     await state.reset_state()
