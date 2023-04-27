@@ -6,22 +6,14 @@ def get_menu_ikb():
                                    callback_data="calculate")
     button2 = InlineKeyboardButton(text= "Допомога",
                                    callback_data="help")
-    button3 = InlineKeyboardButton(text= "Відписатись",
-                                   callback_data="unsub")
+    button3 = InlineKeyboardButton(text= "Про нас",
+                                   callback_data="about")
     button4 = InlineKeyboardButton(text= "Фідбек",
                                    callback_data="feedback")
     menu_ikb.add(button1,button2,button3,button4)
     return menu_ikb
 
-def get_unsub_ikb():
-    unsub_ikb = InlineKeyboardMarkup(row_width=2)
-    button1 = InlineKeyboardButton(text= "Так",
-                                   callback_data="yes")
-    button2 = InlineKeyboardButton(text= "Ні",
-                                   callback_data="no")
 
-    unsub_ikb.add(button1,button2)
-    return unsub_ikb
 
 def get_feedback_ikb():
     feedback_ikb = InlineKeyboardMarkup(row_width=1)
@@ -63,9 +55,9 @@ def get_admin_menu_ikb():
     menu_ikb = InlineKeyboardMarkup(row_width=2)
     button1 = InlineKeyboardButton(text= "Розіслати повідомлення",
                                    callback_data="sending")
-    button2 = InlineKeyboardButton(text= "Надай файл зі статистикою",
+    button2 = InlineKeyboardButton(text= "Файл зі статистикою",
                                    callback_data="stats")
-    button3 = InlineKeyboardButton(text= "Скільки підписників у бота?",
+    button3 = InlineKeyboardButton(text= "К-ть підписників за весь час",
                                    callback_data="users_amount")
     button4 = InlineKeyboardButton(text= "Вийти з адм. панелі",
                                    callback_data="admin_out")

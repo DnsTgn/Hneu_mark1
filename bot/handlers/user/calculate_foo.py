@@ -2,6 +2,7 @@ from aiogram import types, Dispatcher
 from aiogram.dispatcher import FSMContext
 
 from AiogramTemplate.bot.database.methods import db_con as db
+from AiogramTemplate.bot.handlers.user import main as user_foo
 from AiogramTemplate.bot.keyboards import inline
 from AiogramTemplate.bot.misc.forms import Form
 from AiogramTemplate.bot.misc import util as valid, config, calc
@@ -113,7 +114,7 @@ async def region_question(message:types.Message):
     print("[INFO] - Викликана функція region_question")
     await Form.region_set.set()
     ikb = inline.get_regions_ikb()
-    text = "Для додавання регіонального коефіцієнту оберіть область де розташований заклад освіти у якій ви плануєте вступити"
+    text = "Для додавання регіонального коефіцієнту оберіть область де розташований заклад освіти у який ви плануєте вступити"
     await message.bot.send_message(chat_id=message.chat.id,text=text,reply_markup=ikb)
 
 async def region_answer(call:types.CallbackQuery):
@@ -146,12 +147,19 @@ async def calculate(call:types.CallbackQuery):
         else:
             reg = float(data['reg_koef'])
     scores = {'ukr':result[2],'math':result[3],result[1]:result[4]}
-    res = calc.calc_score(reg,spec,scores)
+    res = await calc.calc_score(reg,spec,scores)
     await print_KB(call,res,state)
 
 async def print_KB(call:types.CallbackQuery,res,state: FSMContext):
+    spec = str()
+    state1 = Dispatcher.get_current().current_state()
+    async with state1.proxy() as data:
+        spec = data['spec']
     print("[INFO] - Викликана функція print_KB")
-    text = f"На підставі введених даних з урахуванням:\nГалузевого коефіцієнта ={res[1]}\nРегіонального коефіцієнта ={res[2]}\nВаш конкурсний бал становить: <b>{res[0]}</b>\n\nБудь ласка, перевірте цю інформацію в приймальній комісії, оскільки ми не несемо відповідальності за коректність уведених даних та розрахунку.\n\nДякуємо, що скористалися нашим ботом!\nРозроблено факультетом ІТ у Харківському національному економічному університеті імені Семена Кузнеця"
+    name = await calc.get_spec_name(spec)
+    text = f"На підставі введених даних для спеціальності <i><b>'{spec} {name}'</b></i> з урахуванням:\nГалузевого коефіцієнта ={res[1]}\nРегіонального коефіцієнта ={res[2]}\nВаш конкурсний бал становить: <b>{res[0]}</b>\n\nБудь ласка, перевірте цю інформацію в приймальній комісії, оскільки ми не несемо відповідальності за коректність уведених даних та розрахунку.\n\nДякуємо, що скористалися нашим ботом!\nРозроблено факультетом ІТ у Харківському національному економічному університеті імені Семена Кузнеця"
+
     #tex = f"Для вибраної спеціальності галузевий коеф ={res[1]}. для вибраного регіону, регіональний коеф ={res[2]}.\nТож ваш бал є:<b>{res[0]}</b>"
     await call.bot.send_message(chat_id=call.message.chat.id,text=text)
     await state.reset_state()
+    await user_foo.menu(call)

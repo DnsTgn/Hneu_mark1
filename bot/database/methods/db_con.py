@@ -26,20 +26,6 @@ def add_id(value):
         print('[WARN] - ID не було додано до БД')
 
 
-def status_false(value):
-    try:
-        cur.execute(f"UPDATE users SET status = false WHERE user_id = {value};")
-        con.commit()
-        print("[INFO] - Було оновлено status на false для  ID : ", value)
-    except:
-        print('[WARN] - Помилка під час виконання запиту БД')
-def status_true(value):
-    try:
-        cur.execute(f"UPDATE users SET status = true WHERE user_id = {value};")
-        con.commit()
-        print("[INFO] - Було оновлено status на true для  ID : ", value)
-    except:
-        print('[WARN] - Помилка під час виконання запиту БД')
 
 def add_add_subj(value,key):
     try:
@@ -76,12 +62,6 @@ def get_all_info(key):
     print(f"for ID:{key}, all info is {result}")
     return list(result)
 
-def get_users_for_sending():
-    cur.execute(f"SELECT user_id FROM users WHERE status = true")
-    results = cur.fetchall()
-    column_values = [result[0] for result in results]
-    print(column_values)
-    return list(column_values)
 def get_users():
     cur.execute(f"SELECT user_id FROM users WHERE 1=1")
     results = cur.fetchall()
@@ -95,7 +75,7 @@ def get_users_amount():
     return result[0]
 
 def get_stats():
-    cur.execute(f"SELECT * FROM spec_list")
+    cur.execute(f"SELECT * FROM spec_list ORDER BY amount DESC;")
     res = cur.fetchall()
     result = []
     for r in res:

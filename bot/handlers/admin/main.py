@@ -82,18 +82,16 @@ async def sending(call:types.CallbackQuery):
                                 text=f"Дочейкайтесь кінця розсилки, вас буде повідомлено")
 
     try:
-        users = db.get_users_for_sending()
+        users = db.get_users()
 
         # Створюємо повідомлення, яке відправимо підписникам
         state = Dispatcher.get_current().current_state()
         async with state.proxy() as data:
             message = data['message']
 
-        count_db_all = db.get_users_amount()
         count_bd = len(users)
         count_fact = 0
         count_blocked = 0
-        count_unsub = count_db_all - count_bd
 
         for member in users:
             try:
@@ -109,13 +107,13 @@ async def sending(call:types.CallbackQuery):
                 await asyncio.sleep(e.timeout)
             except exceptions.TelegramAPIError:
                 print(f"Failed to send message to {member}")
-        await call.bot.send_message(chat_id=call.message.chat.id,text = f"Всього користувачів в базі даних (за весь час) :{count_db_all}\nВсього користувачів для розсилки в базі даних (ті що не відписались): {count_bd}\nКористувачів які заблокували та видалили бота: {count_blocked}\nВсього розіслано: {count_fact}\n\n<i>Якщо кількість розісланих повідомлень = 0, це може бути пов'язано з неправильним форматом повідомлення розсилки, слід розсилати лише текс, допускаються посилання у ньому</i>")
+        await call.bot.send_message(chat_id=call.message.chat.id,text = f"Всього користувачів в базі даних (за весь час): {count_bd}\nКористувачів які заблокували та видалили бота: {count_blocked}\nВсього розіслано: {count_fact}\n\n<i>Якщо кількість розісланих повідомлень = 0, це може бути пов'язано з неправильним форматом повідомлення розсилки, слід розсилати лише текст, також допускаються посилання у ньому</i>")
     except exceptions.TelegramAPIError as e:
         print(f"Failed to get chat members. Error: {e}")
     await admin_menu(call)
 
 async def users_amount(call:types.CallbackQuery):
-    text = f"На бота зараз підписано <b>{db.get_users_amount()}</b> користувачів"
+    text = f"Бот за весь час має <b>{db.get_users_amount()}</b> користувачів"
     await call.bot.send_message(chat_id=call.message.chat.id,text=text)
     await Form.admin.set()
     await admin_menu(call)

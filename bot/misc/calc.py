@@ -1,21 +1,28 @@
 import json
 
-def get_dict_koef():
+
+async def get_spec_name(code):
+    with open(r"D:\HneuMark\AiogramTemplate\bot\koef.json", 'r',encoding='UTF-8') as file:
+        dictionary = json.load(file)
+    name = dictionary[code]['name']
+    return name
+async def get_dict_koef():
     with open(r"D:\HneuMark\AiogramTemplate\bot\koef.json", 'r') as file:
         dictionary = json.load(file)
     return dictionary
-def check_galuz(spec):
+async def check_galuz(spec):
     with open(r"D:\HneuMark\AiogramTemplate\bot\g_koef.json", 'r') as file:
         dictionary = json.load(file)
     if spec in dictionary:
         return dictionary[spec]
     else:
         return 1
-def calc_score(reg, spec, dict_scores):
+async def calc_score(reg, spec, dict_scores):
     score = 0
     sum_koef = 0
-    dictionary_koef = get_dict_koef()
-    galuz = check_galuz(spec)
+
+    dictionary_koef = await get_dict_koef()
+    galuz = await check_galuz(spec)
     for subj in dict_scores.keys():
         score += dictionary_koef[spec][subj] * dict_scores[subj]
         sum_koef += dictionary_koef[spec][subj]
