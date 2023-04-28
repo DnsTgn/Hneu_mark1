@@ -10,7 +10,7 @@ async def stats_file():
     res = db.get_stats()
     datestamp =  datetime.now().strftime("%d-%m-%Y %H:%M:%S")
     amount = 0
-    with open(r"D:\HneuMark\AiogramTemplate\bot\koef.json", 'r', encoding="utf-8") as file:
+    with open(r"bot\koef.json", 'r', encoding="utf-8") as file:
         dictionary = json.load(file)
     for r in res:
         amount += r[1]

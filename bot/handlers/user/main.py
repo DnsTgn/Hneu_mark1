@@ -34,7 +34,7 @@ async def feedback_answer(message_or_callback,state: FSMContext):
     await menu(message_or_callback)
 async def help(message_or_callback):
     print("[INFO] - Викликана функція help")
-    text = "Дякуємо, що скористалися нашим ботом, розробленим факультетом ІТ у <a href =\"www.hneu.edu.ua\">ХНЕУ імені Семена Кузнеця</a>.\n\nМетодика розрахунку конкурсного балу <a href = \"https://telegra.ph/Metodika-rozrahunku-04-18\">тут</a>.\n<a href=\"https://telegra.ph/Pro-nas-04-18\">Про нас</a>\n\nЯкщо є запитання:\ntelegram: @KhNUE\nkuznets.event@gmail.com"
+    text = "Дякуємо, що скористалися нашим ботом, розробленим факультетом ІТ у <a href =\"www.hneu.edu.ua\">ХНЕУ імені Семена Кузнеця</a>.\n\nМетодика розрахунку конкурсного балу <a href = \"https://telegra.ph/Metodika-rozrahunku-04-18\">тут</a>.\n\nЯкщо є запитання:\ntelegram: @KhNUE\nkuznets.event@gmail.com"
     if isinstance(message_or_callback,types.Message):
         await message_or_callback.bot.send_message(chat_id=message_or_callback.chat.id, text = text,disable_web_page_preview=True)
     elif isinstance(message_or_callback,types.CallbackQuery):

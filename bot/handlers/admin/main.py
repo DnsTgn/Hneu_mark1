@@ -1,13 +1,10 @@
 import asyncio
-import io
 from aiogram import exceptions
 
 from aiogram import Dispatcher
 from  aiogram import types
 
-
 from aiogram.dispatcher import FSMContext
-
 
 from AiogramTemplate.bot.database.methods import db_con as db
 from AiogramTemplate.bot.handlers.admin.util import stats_file
@@ -44,8 +41,8 @@ async def sending_quest(call:types.CallbackQuery,state:FSMContext):
     await Form.admin_sending.set()
     text ="Введіть повідомлення для розсилки"
     await call.bot.send_message(chat_id=call.message.chat.id,text = text)
-    cur_state = await state.get_state()
-    print(cur_state)
+
+
 
 
 async def sending_answer(message: types.Message):
@@ -62,7 +59,6 @@ async def sending_answer(message: types.Message):
 
 async def sending_answer_1(call: types.CallbackQuery):
     print("[INFO] - викликано функцію sending_answer_1")
-
 
     if call.data == "edit_send_message":
         await call.bot.send_message(chat_id=call.message.chat.id,
@@ -107,7 +103,7 @@ async def sending(call:types.CallbackQuery):
                 await asyncio.sleep(e.timeout)
             except exceptions.TelegramAPIError:
                 print(f"Failed to send message to {member}")
-        await call.bot.send_message(chat_id=call.message.chat.id,text = f"Всього користувачів в базі даних (за весь час): {count_bd}\nКористувачів які заблокували та видалили бота: {count_blocked}\nВсього розіслано: {count_fact}\n\n<i>Якщо кількість розісланих повідомлень = 0, це може бути пов'язано з неправильним форматом повідомлення розсилки, слід розсилати лише текст, також допускаються посилання у ньому</i>")
+        await call.bot.send_message(chat_id=call.message.chat.id,text = f"Всього користувачів в базі даних (за весь час): {count_bd}\nКористувачів які заблокували та видалили бота: {count_blocked}\nВсього розіслано: {count_fact}\n\n<i>Якщо кількість розісланих повідомлень = 0, це може бути пов'язано з неправильним форматом повідомлення розсилки, в повідомленні дозволено писати тільки текст та посилання</i>")
     except exceptions.TelegramAPIError as e:
         print(f"Failed to get chat members. Error: {e}")
     await admin_menu(call)

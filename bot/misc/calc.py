@@ -2,16 +2,16 @@ import json
 
 
 async def get_spec_name(code):
-    with open(r"D:\HneuMark\AiogramTemplate\bot\koef.json", 'r',encoding='UTF-8') as file:
+    with open("bot\koef.json", 'r',encoding='UTF-8') as file:
         dictionary = json.load(file)
     name = dictionary[code]['name']
     return name
 async def get_dict_koef():
-    with open(r"D:\HneuMark\AiogramTemplate\bot\koef.json", 'r') as file:
+    with open('bot\koef.json', 'r') as file:
         dictionary = json.load(file)
     return dictionary
 async def check_galuz(spec):
-    with open(r"D:\HneuMark\AiogramTemplate\bot\g_koef.json", 'r') as file:
+    with open("bot\g_koef.json", 'r') as file:
         dictionary = json.load(file)
     if spec in dictionary:
         return dictionary[spec]
