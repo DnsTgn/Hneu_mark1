@@ -1,22 +1,37 @@
 import json
+import logging
 
 
 async def get_spec_name(code):
-    with open("bot\koef.json", 'r',encoding='UTF-8') as file:
-        dictionary = json.load(file)
-    name = dictionary[code]['name']
-    return name
+    try:
+        with open("bot\koef.json", 'r',encoding='UTF-8') as file:
+            dictionary = json.load(file)
+        name = dictionary[code]['name']
+        logging.info("file bot\koef.json was opened")
+        return name
+    except:
+        logging.error(">file bot/koef.json<")
 async def get_dict_koef():
-    with open('bot\koef.json', 'r') as file:
-        dictionary = json.load(file)
-    return dictionary
+    try:
+        with open('bot\koef.json', 'r') as file:
+            dictionary = json.load(file)
+        logging.info("file bot\koef.json was opened")
+        return dictionary
+    except:
+        logging.error(">file bot/koef.json<")
+
 async def check_galuz(spec):
-    with open("bot\g_koef.json", 'r') as file:
-        dictionary = json.load(file)
-    if spec in dictionary:
-        return dictionary[spec]
-    else:
-        return 1
+    try:
+        with open("bot\g_koef.json", 'r') as file:
+            dictionary = json.load(file)
+        if spec in dictionary:
+            logging.info(f"galuz for spec{spec} was checked")
+            return dictionary[spec]
+        else:
+            logging.info(f"galuz for spec{spec} was checked")
+            return 1
+    except:
+        logging.error(">file bot/g_koef.json<")
 async def calc_score(reg, spec, dict_scores):
     score = 0
     sum_koef = 0
@@ -27,7 +42,11 @@ async def calc_score(reg, spec, dict_scores):
         score += dictionary_koef[spec][subj] * dict_scores[subj]
         sum_koef += dictionary_koef[spec][subj]
 
-    score = (score/sum_koef)*reg * galuz
+    try:
+        score = (score/sum_koef)*reg * galuz
+        logging.debug("score calc is OK")
+    except:
+        logging.error("division by 0 or type error")
 
     if score > 200:
         score = 200

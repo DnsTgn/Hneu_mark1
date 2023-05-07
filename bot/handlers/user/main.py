@@ -45,11 +45,12 @@ async def help(message_or_callback):
 
 async def about(message_or_callback):
     print("[INFO] - Викликана функція about")
-    text = "ІНФОРМАЦІЯ ПРО НАС"
+    text = f"Цей бот \U0001F916 створений у Харківському національному економічному університеті імені Семена Кузнеця \U0001F468\U0001F4BB\U0001F393. \nНаша команда:\n\n▫️Авторі ідеї, куратор проекту та Product Owner – проректор з навчально-методичної роботи та стратегічного розвитку Максим Серпухов \n\n▫️Product Manager – Микита Московкін, студент 1 року навчання за освітнім ступенем «магістр» програми «Міжнародний ІТ менеджмент»\n\n▫️Development Team:\nТовгін Денис – студент 2го курсу факультету ІТ\nЩерба Наталія - студентка 2го курсу факультету ІТ\n\n✅ Дізнавайтеся більше про наші проекти на <a href = \"https://www.hneu.edu.ua\">сайті</a>.  \nМи на зв’язку @KhNUE"
+
     if isinstance(message_or_callback, types.Message):
-        await message_or_callback.bot.send_message(chat_id=message_or_callback.chat.id, text=text)
+        await message_or_callback.bot.send_message(chat_id=message_or_callback.chat.id, text=text,disable_web_page_preview=True)
     elif isinstance(message_or_callback, types.CallbackQuery):
-        await message_or_callback.message.bot.send_message(chat_id=message_or_callback.message.chat.id,text=text)
+        await message_or_callback.message.bot.send_message(chat_id=message_or_callback.message.chat.id,text=text,disable_web_page_preview=True  )
     await menu(message_or_callback)
 
 

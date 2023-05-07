@@ -1,6 +1,7 @@
 from aiogram.utils import executor
 from aiogram import Bot, Dispatcher
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
+import logging
 
 from AiogramTemplate.bot.database.methods import db_con
 #from filters import register_all_filters
@@ -16,6 +17,8 @@ async def __on_start_up(dp: Dispatcher) -> None:
 
 
 def start_bot():
+    logging.basicConfig(level=logging.INFO, filename="py_log.log", filemode="w",
+                        format="%(asctime)s %(levelname)s %(message)s")
     db_con.cur, db_con.con = db_con.get_connect()
     bot = Bot(token=env.TgKeys.TOKEN, parse_mode='HTML')
     dp = Dispatcher(bot, storage=MemoryStorage())
