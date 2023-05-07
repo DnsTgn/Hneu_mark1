@@ -1,4 +1,5 @@
-from AiogramTemplate.bot.main import start_bot
+from aiogram import executor
+from bot.main import start_bot
 
 if __name__ == '__main__':
-    start_bot()
+    executor.start_polling(start_bot())
