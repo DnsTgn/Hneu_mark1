@@ -6,10 +6,10 @@ def get_connect():
     logging.debug("Called <get_connect>)")
     try:
         conn = psycopg2.connect(
-            database="HNEUmarkCalc",
+            database="mydb",
             user="postgres",
-            password="hneumarkcalc",
-            host="localhost",
+            password="Ng32fl3jdfqa",
+            host="db",
             port="5432"
         )
         curr = conn.cursor()

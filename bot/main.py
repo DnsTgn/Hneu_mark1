@@ -3,11 +3,11 @@ from aiogram import Bot, Dispatcher
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 import logging
 
-from AiogramTemplate.bot.database.methods import db_con
+from .database.methods import db_con
 #from filters import register_all_filters
-from AiogramTemplate.bot.misc import env
-from AiogramTemplate.bot.handlers import register_all_handlers
-from AiogramTemplate.bot.database.models import register_models
+from .misc import env
+from .handlers import register_all_handlers
+from .database.models import register_models
 
 
 async def __on_start_up(dp: Dispatcher) -> None:

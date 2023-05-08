@@ -1,11 +1,11 @@
 from aiogram import types, Dispatcher
 from aiogram.dispatcher import FSMContext
 
-from AiogramTemplate.bot.database.methods import db_con as db
-from AiogramTemplate.bot.handlers.user import main as user_foo
-from AiogramTemplate.bot.keyboards import inline
-from AiogramTemplate.bot.misc.forms import Form
-from AiogramTemplate.bot.misc import util as valid, config, calc
+from ...database.methods import db_con as db
+from ...handlers.user import main as user_foo
+from ...keyboards import inline
+from ...misc.forms import Form
+from ...misc import util as valid, config, calc
 
 
 async def math_question(message_or_callback):

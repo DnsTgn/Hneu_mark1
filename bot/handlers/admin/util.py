@@ -3,7 +3,7 @@ import logging
 from datetime import datetime
 from openpyxl import Workbook
 import json
-from AiogramTemplate.bot.database.methods import db_con as db
+from ...database.methods import db_con as db
 
 
 async def stats_file():

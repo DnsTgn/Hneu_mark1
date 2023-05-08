@@ -3,12 +3,11 @@ from  aiogram import types
 from aiogram import Dispatcher, Bot
 from aiogram.dispatcher import FSMContext
 
-from AiogramTemplate.bot.database.methods import db_con
-from AiogramTemplate.bot.handlers.user import calculate_foo
-from AiogramTemplate.bot.keyboards import inline
-from AiogramTemplate.bot.misc import config
-from AiogramTemplate.bot.misc.forms import Form
-
+from ...database.methods import db_con
+from ...keyboards import inline
+from ...misc import config
+from ...misc.forms import Form
+from . import calculate_foo
 async def feedback(message_or_callback):
     print("[INFO] - Викликана функція feedback")
     text = "Скажи нам як бути краще!"

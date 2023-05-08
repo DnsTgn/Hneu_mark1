@@ -6,12 +6,12 @@ from  aiogram import types
 
 from aiogram.dispatcher import FSMContext
 
-from AiogramTemplate.bot.database.methods import db_con as db
-from AiogramTemplate.bot.handlers.admin.util import stats_file
-from AiogramTemplate.bot.handlers.user.main import menu
-from AiogramTemplate.bot.keyboards import inline
-from AiogramTemplate.bot.misc.config import admin_chat_id as ADMINS
-from AiogramTemplate.bot.misc.forms import Form
+from ...database.methods import db_con as db
+from ...handlers.admin.util import stats_file
+from ...handlers.user.main import menu
+from ...keyboards import inline
+from ...misc.config import admin_chat_id as ADMINS
+from ...misc.forms import Form
 
 
 async def admin_menu(message_or_callback):

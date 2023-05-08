@@ -1,8 +1,8 @@
 from aiogram import Dispatcher
 
-from AiogramTemplate.bot.handlers.admin import register_admin_handlers
-from AiogramTemplate.bot.handlers.other import register_other_handlers
-from AiogramTemplate.bot.handlers.user import register_user_handlers
+from .admin import register_admin_handlers
+from .other import register_other_handlers
+from .user import register_user_handlers
 
 
 def register_all_handlers(dp: Dispatcher) -> None:
