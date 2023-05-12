@@ -2,13 +2,13 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 def get_menu_ikb():
     menu_ikb = InlineKeyboardMarkup(row_width=2)
-    button1 = InlineKeyboardButton(text= "Розрахувати",
+    button1 = InlineKeyboardButton(text= "📊Розрахувати",
                                    callback_data="calculate")
-    button2 = InlineKeyboardButton(text= "Допомога",
+    button2 = InlineKeyboardButton(text= "🆘Допомога",
                                    callback_data="help")
-    button3 = InlineKeyboardButton(text= "Про нас",
+    button3 = InlineKeyboardButton(text= "👥Про нас",
                                    callback_data="about")
-    button4 = InlineKeyboardButton(text= "Фідбек",
+    button4 = InlineKeyboardButton(text= "🤷‍♂️Фідбек",
                                    callback_data="feedback")
     menu_ikb.add(button1,button2,button3,button4)
     return menu_ikb
@@ -17,7 +17,7 @@ def get_menu_ikb():
 
 def get_feedback_ikb():
     feedback_ikb = InlineKeyboardMarkup(row_width=1)
-    button1 = InlineKeyboardButton(text="Відмінити",
+    button1 = InlineKeyboardButton(text="🔙Відмінити",
                                    callback_data="out")
     feedback_ikb.add(button1)
     return feedback_ikb
@@ -25,15 +25,15 @@ def get_feedback_ikb():
 def get_add_subj_ikb():
     add_subj_ikb = InlineKeyboardMarkup(row_width=2)
 
-    ib1 = InlineKeyboardButton(text="Іноземна мова",
+    ib1 = InlineKeyboardButton(text="📚Іноземна мова",
                                callback_data='english')
-    ib2 = InlineKeyboardButton(text="Фізика",
+    ib2 = InlineKeyboardButton(text="🔋Фізика",
                                callback_data='physics')
-    ib3 = InlineKeyboardButton(text="Хімія",
+    ib3 = InlineKeyboardButton(text="🔬Хімія",
                                callback_data='chemistry')
-    ib4 = InlineKeyboardButton(text="Біологія",
+    ib4 = InlineKeyboardButton(text="🌿Біологія",
                                callback_data='biology')
-    ib5 = InlineKeyboardButton(text="Історія",
+    ib5 = InlineKeyboardButton(text="🏰Історія України",
                                callback_data='history')
     add_subj_ikb.add(ib1, ib2, ib3, ib4, ib5)
     return add_subj_ikb

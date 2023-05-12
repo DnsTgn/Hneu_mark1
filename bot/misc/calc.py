@@ -1,10 +1,12 @@
 import json
+import os
 import logging
 
 
 async def get_spec_name(code):
     try:
-        with open("bot\koef.json", 'r',encoding='UTF-8') as file:
+        file_path = os.path.join("/app","AiogramTemplate","bot", "koef.json")
+        with open(file_path, 'r',encoding='UTF-8') as file:
             dictionary = json.load(file)
         name = dictionary[code]['name']
         logging.info("file bot\koef.json was opened")
@@ -13,7 +15,8 @@ async def get_spec_name(code):
         logging.error(">file bot/koef.json<")
 async def get_dict_koef():
     try:
-        with open('bot\koef.json', 'r') as file:
+        file_path = os.path.join("/app","AiogramTemplate","bot", "koef.json")
+        with open(file_path, 'r') as file:
             dictionary = json.load(file)
         logging.info("file bot\koef.json was opened")
         return dictionary
@@ -22,7 +25,8 @@ async def get_dict_koef():
 
 async def check_galuz(spec):
     try:
-        with open("bot\g_koef.json", 'r') as file:
+        file_path = os.path.join("/app","AiogramTemplate","bot", "g_koef.json")
+        with open(file_path, 'r') as file:
             dictionary = json.load(file)
         if spec in dictionary:
             logging.info(f"galuz for spec{spec} was checked")

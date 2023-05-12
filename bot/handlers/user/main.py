@@ -3,14 +3,14 @@ from  aiogram import types
 from aiogram import Dispatcher, Bot
 from aiogram.dispatcher import FSMContext
 
-from ...database.methods import db_con
+from ...database.methods.db import database
 from ...keyboards import inline
 from ...misc import config
 from ...misc.forms import Form
 from . import calculate_foo
 async def feedback(message_or_callback):
     print("[INFO] - Викликана функція feedback")
-    text = "Скажи нам як бути краще!"
+    text = "Скажи нам як бути краще 🤷‍♂️😉"
     ikb = inline.get_feedback_ikb()
     await Form.feedback.set()
     if isinstance(message_or_callback, types.Message):
@@ -23,7 +23,7 @@ async def feedback_answer(message_or_callback,state: FSMContext):
     print("[INFO] - Викликана функція feedback_answer")
     await state.reset_state()
     if isinstance(message_or_callback, types.Message):
-        text = "Дякуємо за зворотній зв'язок!"
+        text = "Дякуємо за зворотній зв'язок❤️"
         await message_or_callback.bot.forward_message(chat_id=config.admin_chat_id,from_chat_id=message_or_callback.chat.id,message_id=message_or_callback.message_id)
         await message_or_callback.bot.send_message(chat_id=message_or_callback.chat.id, text=text)
     elif isinstance(message_or_callback, types.CallbackQuery):
@@ -33,7 +33,7 @@ async def feedback_answer(message_or_callback,state: FSMContext):
     await menu(message_or_callback)
 async def help(message_or_callback):
     print("[INFO] - Викликана функція help")
-    text = "Дякуємо, що скористалися нашим ботом, розробленим факультетом ІТ у <a href =\"www.hneu.edu.ua\">ХНЕУ імені Семена Кузнеця</a>.\n\nМетодика розрахунку конкурсного балу <a href = \"https://telegra.ph/Metodika-rozrahunku-04-18\">тут</a>.\n\nЯкщо є запитання:\ntelegram: @KhNUE\nkuznets.event@gmail.com"
+    text = "🙏🏻 Дякуємо, що користуєтесь нашим ботом, який розроблений факультетом ІТ у <a href =\"www.hneu.edu.ua\">ХНЕУ імені Семена Кузнеця</a>👨‍🎓❤️.\n\n👉 Методика розрахунку конкурсного балу <a href = \"https://telegra.ph/Metodika-rozrahunku-04-18\">тут</a>.\n\n📲Якщо є запитання:\ntelegram: @KhNUE\nkuznets.event@gmail.com"
     if isinstance(message_or_callback,types.Message):
         await message_or_callback.bot.send_message(chat_id=message_or_callback.chat.id, text = text,disable_web_page_preview=True)
     elif isinstance(message_or_callback,types.CallbackQuery):
@@ -58,9 +58,10 @@ async def about(message_or_callback):
 async def welcome_message(message: types.Message):
     print(f"[INFO] - Викликана функція welcome_message, chat_id = {message.chat.id}")
     bot: Bot = message.bot
-    db_con.add_id(message.from_user.id)
+    DB = database()
+    DB.add_id(message.from_user.id)
     await Form.welcome.set()
-    text = "😁Привіт! Я допоможу розрахувати конкурсний бал для вступу. Це дасть змогу оцінити, на яку спеціальність у вас кращі шанси для вступу!\n\nЦей бот розроблено в <a href = \"www.hneu.edu.ua\">Харківському національному економічному університеті імені Семена Кузнеця</a>!"
+    text = "😉 Привіт! Я допоможу розрахувати конкурсний бал для вступу😳📊.\nЦе дасть змогу оцінити ☝🏻, на яку спеціальність у вас кращі шанси для вступу! Цей бот розроблено в <a href = \"www.hneu.edu.ua\">Харківському національному економічному університеті імені Семена Кузнеця ❤️👨‍🎓</a>"
     await bot.send_message(chat_id= message.chat.id,text =text,disable_web_page_preview=True)
     await menu(message)
 

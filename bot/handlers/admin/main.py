@@ -6,7 +6,7 @@ from  aiogram import types
 
 from aiogram.dispatcher import FSMContext
 
-from ...database.methods import db_con as db
+from ...database.methods.db import database
 from ...handlers.admin.util import stats_file
 from ...handlers.user.main import menu
 from ...keyboards import inline
@@ -78,7 +78,7 @@ async def sending(call:types.CallbackQuery):
                                 text=f"Дочейкайтесь кінця розсилки, вас буде повідомлено")
 
     try:
-        users = db.get_users()
+        users = database.get_users()
 
         # Створюємо повідомлення, яке відправимо підписникам
         state = Dispatcher.get_current().current_state()
@@ -109,7 +109,7 @@ async def sending(call:types.CallbackQuery):
     await admin_menu(call)
 
 async def users_amount(call:types.CallbackQuery):
-    text = f"Бот за весь час має <b>{db.get_users_amount()}</b> користувачів"
+    text = f"Бот за весь час має <b>{database.get_users_amount()}</b> користувачів"
     await call.bot.send_message(chat_id=call.message.chat.id,text=text)
     await Form.admin.set()
     await admin_menu(call)

@@ -3,7 +3,7 @@ from aiogram.types import Message
 
 
 async def echo(msg: Message):
-    text = "Вибачте, я Вас не розумію!\n\n<i>Використайте /menu або /help</i>"
+    text = "📍Вибачте, я Вас не розумію!\n\n<i>Використайте /menu або /help</i>"
     await msg.answer(text)
 
 
