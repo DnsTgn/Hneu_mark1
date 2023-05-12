@@ -5,16 +5,13 @@ import logging
 import os
 
 from .database.methods import database
-#from filters import register_all_filters
 
 from .handlers import register_all_handlers
-from .database.models import register_models
 
 
 async def __on_start_up(dp: Dispatcher) -> None:
-    #register_all_filters(dp)
     register_all_handlers(dp)
-    register_models()
+
 
 
 def start_bot():

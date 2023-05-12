@@ -18,7 +18,6 @@ class database:
     def get_connect(self):
         logging.debug("Called <get_connect>)")
         try:
-            #DB_HOST=localhost;DB_PORT=5432;DB_USER=postgres;DB_PASSWORD=Ng32fl3jdfqa
             conn = psycopg2.connect(
                 database=os.environ.get("DB"),
                 user=os.environ.get("DB_USER"),
