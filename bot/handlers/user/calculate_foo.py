@@ -9,7 +9,6 @@ from ...misc import util as valid, config, calc
 
 
 async def math_question(message_or_callback):
-    print("[INFO] - Викликана функція math_question")
     await Form.math_ent.set()
     text = "📌 Будь ласка, уведіть цифрою отримані бали на НМТ з математики від 100 до 200 балів.\n✅ Наприклад, <b>189</b>"
 
@@ -19,7 +18,6 @@ async def math_question(message_or_callback):
         await message_or_callback.bot.send_message(chat_id=message_or_callback.message.chat.id,text=text)
 
 async def math_answer(message:types.Message):
-    print("[INFO] - Викликана функція math_answer")
     valid_check = list(valid.nmt_mark_validation(message.text))
     if valid_check[0] == 1:
         DB = database()
@@ -31,14 +29,12 @@ async def math_answer(message:types.Message):
 
 
 async def ukr_question(message:types.Message):
-    print("[INFO] - Викликана функція urk_question")
     await Form.ukr_ent.set()
     text = "📌 Будь ласка, уведіть цифрою отримані бали на НМТ з української мови від 100 до 200 балів.\n✅Наприклад, <b>175</b>"
     await message.bot.send_message(chat_id=message.chat.id, text=text)
 
 
 async def ukr_answer(message:types.Message):
-    print("[INFO] - Викликана функція ukr_answer")
     valid_check = list(valid.nmt_mark_validation(message.text))
     if valid_check[0] == 1:
         DB = database()
@@ -50,26 +46,22 @@ async def ukr_answer(message:types.Message):
 
 
 async def add_subj_quest(message:types.Message):
-    print("[INFO] - Викликана функція add_subj_quest")
     await Form.add_subj_ch.set()
     ikb = inline.get_add_subj_ikb()
     text = "📌 Будь ласка, оберіть третій предмет, який ви складали:"
     await message.bot.send_message(chat_id=message.chat.id,text= text,reply_markup=ikb)
 
 async def add_subj_answer(call:types.CallbackQuery):
-    print("[INFO] - Викликана функція add_subj_answer")
     DB = database()
     DB.add_add_subj(call.data,call.from_user.id)
     await add_subj_mark_quest(call)
 
 async def add_subj_mark_quest(call:types.CallbackQuery):
-    print("[INFO] - Викликана функція add_subj_mark_answer")
     await Form.add_ent.set()
     text = f"📌Будь ласка, уведіть цифрою отримані бали на НМТ з {config.subjects[call.data]} від 100 до 200 балів.\n✅Наприклад, <b>199</b>"
     await call.bot.edit_message_text(chat_id=call.message.chat.id,message_id=call.message.message_id,text=text)
 
 async def add_subj_mark_answer(message:types.Message):
-    print("[INFO] - Викликана функція add_subj_mark_answer")
     valid_check = list(valid.nmt_mark_validation(message.text))
     if valid_check[0] == 1:
         DB = database()
@@ -81,13 +73,11 @@ async def add_subj_mark_answer(message:types.Message):
 
 
 async def spec_set_question(message:types.Message):
-    print("[INFO] - Викликана функція spec_set_question")
     await Form.spec_set.set()
     text = "📲Уведіть код спеціальності, для якої потрібно розрахувати конкурсний бал.\n✅Наприклад: <b>073</b> або <b>014.02</b> \n\n📍Подивитися всі коди спеціальностей 👉 <a href = \"https://telegra.ph/PEREL%D0%86K-galuzej-znan-%D1%96-spec%D1%96alnostej-za-yakimi-zd%D1%96jsnyuyetsya-p%D1%96dgotovka-zdobuvach%D1%96v-vishchoi-osv%D1%96ti-04-18\">тут</a>"
     await message.bot.send_message(chat_id=message.chat.id,text= text,disable_web_page_preview=True)
 
 async def spec_set_answer(message:types.Message):
-    print("[INFO] - Викликана функція spec_set_answer")
 
     state = Dispatcher.get_current().current_state()
     check = valid.spec_validation(message.text)
@@ -95,7 +85,6 @@ async def spec_set_answer(message:types.Message):
     if check =="OK":
         async with state.proxy() as data:
             data['spec'] = message.text
-            print(f"[INFO] - Для користувача {message.from_user.id} було встановлено спеціальність {data['spec']}")
             DB = database()
             DB.add_spec_amount(data['spec'])
         await check_spec(message)
@@ -103,7 +92,6 @@ async def spec_set_answer(message:types.Message):
         await message.bot.send_message(chat_id=message.chat.id,text=check)
 
 async def check_spec(message:types.Message):
-    print("[INFO] - Викликана функція check_spec")
     state = Dispatcher.get_current().current_state()
     async with state.proxy() as data:
         check = valid.spec_porig_check(data['spec'])
@@ -116,15 +104,12 @@ async def check_spec(message:types.Message):
 
 
 async def region_question(message:types.Message):
-    print("[INFO] - Викликана функція region_question")
     await Form.region_set.set()
     ikb = inline.get_regions_ikb()
     text = "📍 Для додавання регіонального коефіцієнту оберіть область де розташований заклад освіти 🎓у якій ви плануєте вступити"
     await message.bot.send_message(chat_id=message.chat.id,text=text,reply_markup=ikb)
 
 async def region_answer(call:types.CallbackQuery):
-    print("[INFO] - Викликана функція region_answer")
-    #['reg_first_group','reg_second_group',"reg_other_group","skip"]
 
     state = Dispatcher.get_current().current_state()
     async with state.proxy() as data:
@@ -140,7 +125,6 @@ async def region_answer(call:types.CallbackQuery):
     await calculate(call)
 
 async def calculate(call:types.CallbackQuery):
-    print("[INFO] - Викликана функція calcualte")
     DB = database()
     result = DB.get_all_info(call.from_user.id)
     state = Dispatcher.get_current().current_state()
@@ -161,9 +145,8 @@ async def print_KB(call:types.CallbackQuery,res,state: FSMContext):
     state1 = Dispatcher.get_current().current_state()
     async with state1.proxy() as data:
         spec = data['spec']
-    print("[INFO] - Викликана функція print_KB")
     name = await calc.get_spec_name(spec)
-    text = f"✅На підставі введених даних для спеціальності <i><b>'{spec} {name}'</b></i> з урахуванням:\n\n📍галузевого коефіцієнта =<b>{res[1]}</b>\n\n📍регіонального коефіцієнта =<b>{res[2]}</b>\n\n👉 Ваш конкурсний бал становить: <b>{res[0]}</b>\n\n 🙏🏻 Будь ласка, перевірте цю інформацію в приймальній комісії, оскільки ми ненесемо відповідальності за коректність уведених даних та розрахунку.\n\n🙃 Дякуємо, що скористалися нашим ботом! Розроблено факультетомІТ у Харківському національному економічному університеті імені Семена Кузнеця❤️👨‍🎓"
+    text = f"✅На підставі введених даних для спеціальності <i><b>'{spec} {name}'</b></i> з урахуванням:\n\n📍галузевого коефіцієнта =<b>{res[1]}</b>\n\n📍регіонального коефіцієнта =<b>{res[2]}</b>\n\n👉 Ваш конкурсний бал становить: <b>{res[0]}</b>\n\n 🙏🏻 Будь ласка, перевірте цю інформацію в приймальній комісії, оскільки ми ненесемо відповідальності за коректність уведених даних та розрахунку.\n\n🙃 Дякуємо, що скористалися нашим ботом! Розроблено факультетом ІТ у Харківському національному економічному університеті імені Семена Кузнеця❤️👨‍🎓"
     #tex = f"Для вибраної спеціальності галузевий коеф ={res[1]}. для вибраного регіону, регіональний коеф ={res[2]}.\nТож ваш бал є:<b>{res[0]}</b>"
     await call.bot.send_message(chat_id=call.message.chat.id,text=text)
     await state.reset_state()

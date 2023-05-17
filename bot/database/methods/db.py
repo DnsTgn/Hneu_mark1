@@ -27,10 +27,9 @@ class database:
             )
             curr = conn.cursor()
             logging.info("DB connected!")
-            print("[INFO] - БД під'єднана успішно")
+
             return [curr, conn]
         except:
-            print("[WARN] - Невдала спроба під'єднатися до БД")
             logging.critical("DB is not connected!")
 
 
@@ -38,11 +37,9 @@ class database:
         try:
             self.cur.execute(f"INSERT INTO users (user_id) VALUES ({value}) ON CONFLICT (user_id) DO NOTHING;")
             self.con.commit()
-            print("[INFO] - Додано ID : ", value)
             logging.info(f"id:{value} was added or already was")
         except:
             logging.error(f"id{value} was not added due to an error")
-            print('[WARN] - ID не було додано до БД')
 
 
 
@@ -50,36 +47,29 @@ class database:
         try:
             self.cur.execute(f"UPDATE users SET additional_subj_name = '{value}' WHERE user_id = {key};")
             self.con.commit()
-            print(f"[INFO] - Додатковий предмет {value} був доданий для користувача з ID : {key}")
             logging.info(f"for id:{key} was added additional_subj_name = {value}")
         except:
             logging.error(f"for id{key} wasn`t added additional_subj_name")
-            print(f"[WARN] - Додатковий предмет {value} НЕ був доданий для користувача з ID : {key}!")
 
     def add_mark(self,subj,value,key):
         try:
             self.cur.execute(f"UPDATE users SET {subj} = {value} WHERE user_id = {key};")
             self.con.commit()
-            print(f"[INFO] - Оцінка з {subj} - {value} була додана для користувача з ID : {key}")
             logging.info(f"for id:{key} was added mark = {value},subj = {subj}")
         except:
             logging.error(f"for id{key} wasn`t added mark{value}, subj = {subj}")
-            print(f"[WARN] - Оцінка з {subj} - {value} НЕ була додана для користувача з ID : {key}!")
     def add_spec_amount(self,spec):
         try:
             self.cur.execute(f"UPDATE spec_list SET amount = amount + 1 WHERE spec_code='{spec}';")
             self.con.commit()
-            print(f"[INFO] - до спеціальності {spec} було додано 1 ")
             logging.info(f"for spec:{spec} was added 1")
         except:
             logging.warn(f"for spec:{spec} wasn`t added 1")
-            print(f"[WARN] - до спеціальності {spec} НЕ було додано 1")
 
     def get_add_subj(self,key):
         try:
             self.cur.execute(f"SELECT additional_subj_name FROM users WHERE user_id = {key}")
             result = self.cur.fetchone()
-            print(f"for ID:{key}, additional subject is {result[0]}")
             logging.info(f"for id:{id} additional_subj_name was recieved")
             return result[0]
         except:
@@ -89,7 +79,6 @@ class database:
         try:
             self.cur.execute(f"SELECT * FROM users WHERE user_id = {key}")
             result = self.cur.fetchone()
-            print(f"for ID:{key}, all info is {result}")
             logging.info(f"for id:{id} info was recieved")
             return list(result)
         except:
@@ -100,7 +89,7 @@ class database:
             self.cur.execute(f"SELECT user_id FROM users WHERE 1=1")
             results = self.cur.fetchall()
             column_values = [result[0] for result in results]
-            print(column_values)
+
             logging.info('all users was recieved')
             return list(column_values)
         except:
@@ -109,7 +98,6 @@ class database:
         try:
             self.cur.execute(f"SELECT count(user_id) FROM users WHERE 1=1")
             result = self.cur.fetchone()
-            print(f"В базі є {result[0]} користувачів")
             logging.info("users amount was recieved")
             return result[0]
         except:

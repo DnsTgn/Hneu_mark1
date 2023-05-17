@@ -15,10 +15,9 @@ def nmt_mark_validation(value):
 
 
 def spec_validation(value):
-    text = "📌 Будь ласка, перевірте код спеціальності 👉 <a href=\"https://telegra.ph/PEREL%D0%86K-galuzej-znan-%D1%96-spec%D1%96alnostej-za-yakimi-zd%D1%96jsnyuyetsya-p%D1%96dgotovka-zdobuvach%D1%96v-vishchoi-osv%D1%96ti-04-18|\">тут</a>.\n ☝🏻Має бути 3 цифри. ✅Наприклад: <b>073</b> або <b>014.02</b>"
+    text = "📌 Будь ласка, перевірте код спеціальності 👉 <a href=\"https://telegra.ph/PEREL%D0%86K-galuzej-znan-%D1%96-spec%D1%96alnostej-za-yakimi-zd%D1%96jsnyuyetsya-p%D1%96dgotovka-zdobuvach%D1%96v-vishchoi-osv%D1%96ti-04-18\">тут</a>.\n ☝🏻Має бути 3 цифри. ✅Наприклад: <b>073</b> або <b>014.02</b>"
     try:
         file_path = os.path.join("/app","AiogramTemplate","bot", "koef.json")
-        print(f"[INFO] normpath = {file_path}")
         with open(file_path, 'r') as file:
             dictionary = json.load(file)
         if value not in dictionary:

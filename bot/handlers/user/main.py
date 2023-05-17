@@ -9,7 +9,7 @@ from ...misc import config
 from ...misc.forms import Form
 from . import calculate_foo
 async def feedback(message_or_callback):
-    print("[INFO] - Викликана функція feedback")
+
     text = "Скажи нам як бути краще 🤷‍♂️😉"
     ikb = inline.get_feedback_ikb()
     await Form.feedback.set()
@@ -20,7 +20,7 @@ async def feedback(message_or_callback):
                                                            text=text,reply_markup=ikb)
 
 async def feedback_answer(message_or_callback,state: FSMContext):
-    print("[INFO] - Викликана функція feedback_answer")
+
     await state.reset_state()
     if isinstance(message_or_callback, types.Message):
         text = "Дякуємо за зворотній зв'язок❤️"
@@ -32,7 +32,7 @@ async def feedback_answer(message_or_callback,state: FSMContext):
                                                                  message_id=message_or_callback.message.message_id)
     await menu(message_or_callback)
 async def help(message_or_callback):
-    print("[INFO] - Викликана функція help")
+
     text = "🙏🏻 Дякуємо, що користуєтесь нашим ботом, який розроблений факультетом ІТ у <a href =\"www.hneu.edu.ua\">ХНЕУ імені Семена Кузнеця</a>👨‍🎓❤️.\n\n👉 Методика розрахунку конкурсного балу <a href = \"https://telegra.ph/Metodika-rozrahunku-04-18\">тут</a>.\n\n📲Якщо є запитання:\ntelegram: @KhNUE\nkuznets.event@gmail.com"
     if isinstance(message_or_callback,types.Message):
         await message_or_callback.bot.send_message(chat_id=message_or_callback.chat.id, text = text,disable_web_page_preview=True)
@@ -43,7 +43,7 @@ async def help(message_or_callback):
 
 
 async def about(message_or_callback):
-    print("[INFO] - Викликана функція about")
+
     text = f"Цей бот \U0001F916 створений у Харківському національному економічному університеті імені Семена Кузнеця \U0001F468\U0001F4BB\U0001F393. \nНаша команда:\n\n▫️Авторі ідеї, куратор проекту та Product Owner – проректор з навчально-методичної роботи та стратегічного розвитку Максим Серпухов \n\n▫️Product Manager – Микита Московкін, студент 1 року навчання за освітнім ступенем «магістр» програми «Міжнародний ІТ менеджмент»\n\n▫️Development Team:\nТовгін Денис – студент 2го курсу факультету ІТ\nЩерба Наталія - студентка 2го курсу факультету ІТ\n\n✅ Дізнавайтеся більше про наші проекти на <a href = \"https://www.hneu.edu.ua\">сайті</a>.  \nМи на зв’язку @KhNUE"
 
     if isinstance(message_or_callback, types.Message):
@@ -56,7 +56,6 @@ async def about(message_or_callback):
 
     pass
 async def welcome_message(message: types.Message):
-    print(f"[INFO] - Викликана функція welcome_message, chat_id = {message.chat.id}")
     bot: Bot = message.bot
     DB = database()
     DB.add_id(message.from_user.id)
@@ -66,7 +65,6 @@ async def welcome_message(message: types.Message):
     await menu(message)
 
 async def menu(message_or_callback):
-    print("[INFO] - Викликана функція menu")
     text = "Оберіть команду"
     ikb = inline.get_menu_ikb()
     #await state.reset_state()
