@@ -1,117 +1,117 @@
-import psycopg2
 import logging
 import os
+from sqlalchemy import create_engine, Column, Integer, Text, BIGINT
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
+def set_base():
+    global Base
+    Base = declarative_base()
+
+class User(Base):
+    __tablename__ = 'users'
+
+    user_id = Column(BIGINT, unique=True, nullable=False,primary_key=True)
+    math = Column(Integer, nullable=True)
+    ukr = Column(Integer, nullable=True)
+    add_subj_mark = Column(Integer, nullable=True)
+    additional_subj_name = Column(Text, nullable=True)
+
+
+class SpecList(Base):
+    __tablename__ = 'spec_list'
+
+    spec_code = Column(Text, primary_key=True)
+    amount = Column(Integer)
+
+
 class database:
-
-    cur = None
-    con = None
-
     instance = None
+    session = None
 
     def __new__(cls, *args, **kwargs):
         if not cls.instance:
             cls.instance = super().__new__(cls, *args, **kwargs)
         return cls.instance
+
     def __init__(self):
-        if not self.cur and not self.con:
-            self.cur, self.con = self.get_connect()
-    def get_connect(self):
-        logging.debug("Called <get_connect>)")
+        #if self.session == None:
+        logging.debug("Database instance created.")
+        self.engine = create_engine(
+            f'postgresql://{os.environ.get("DB_USER")}:{os.environ.get("DB_PASSWORD")}@{os.environ.get("DB_HOST")}:{os.environ.get("DB_PORT")}/{os.environ.get("DB")}')
+        Base.metadata.create_all(self.engine)
+        Session = sessionmaker(bind=self.engine)
+        self.session = Session()
+
+
+    def add_user(self, user_id):# +
         try:
-            conn = psycopg2.connect(
-                database=os.environ.get("DB"),
-                user=os.environ.get("DB_USER"),
-                password=os.environ.get("DB_PASSWORD"),
-                host=os.environ.get("DB_HOST"),
-                port=os.environ.get("DB_PORT")
-            )
-            curr = conn.cursor()
-            logging.info("DB connected!")
-
-            return [curr, conn]
+            user = User(user_id=user_id)
+            self.session.merge(user)
+            self.session.commit()
+            logging.info(f"User with user_id {user_id} was added.")
         except:
-            logging.critical("DB is not connected!")
+            self.session.rollback()
+            logging.error(f"User with user_id {user_id} was not added due to an error.")
 
-
-    def add_id(self,value):
+    def add_additional_subj_name(self, additional_subj_name, user_id): #+
         try:
-            self.cur.execute(f"INSERT INTO users (user_id) VALUES ({value}) ON CONFLICT (user_id) DO NOTHING;")
-            self.con.commit()
-            logging.info(f"id:{value} was added or already was")
+            self.session.query(User).filter(User.user_id == user_id).update({User.additional_subj_name: additional_subj_name})
+            self.session.commit()
+            logging.info(f"Additional subject name '{additional_subj_name}' was added for user with user_id {user_id}.")
         except:
-            logging.error(f"id{value} was not added due to an error")
+            self.session.rollback()
+            logging.error(f"Additional subject name for user with user_id {user_id} was not added due to an error.")
 
-
-
-    def add_add_subj(self,value,key):
+    def add_mark(self, subject, mark, user_id): #+
         try:
-            self.cur.execute(f"UPDATE users SET additional_subj_name = '{value}' WHERE user_id = {key};")
-            self.con.commit()
-            logging.info(f"for id:{key} was added additional_subj_name = {value}")
+            self.session.query(User).filter(User.user_id == user_id).update({getattr(User, subject): mark})
+            self.session.commit()
+            logging.info(f"Mark {mark} for {subject} was added for user with user_id {user_id}.")
         except:
-            logging.error(f"for id{key} wasn`t added additional_subj_name")
+            self.session.rollback()
+            logging.error(f"Mark {subject} for user with user_id {user_id} was not added due to an error.")
 
-    def add_mark(self,subj,value,key):
+    def add_spec_amount(self, spec_code): #+?
         try:
-            self.cur.execute(f"UPDATE users SET {subj} = {value} WHERE user_id = {key};")
-            self.con.commit()
-            logging.info(f"for id:{key} was added mark = {value},subj = {subj}")
+            self.session.query(SpecList).filter(SpecList.spec_code == spec_code).update({SpecList.amount: SpecList.amount+1})
+            self.session.commit()
+            logging.info(f"1 was added to spec_code {spec_code}.")
         except:
-            logging.error(f"for id{key} wasn`t added mark{value}, subj = {subj}")
-    def add_spec_amount(self,spec):
-        try:
-            self.cur.execute(f"UPDATE spec_list SET amount = amount + 1 WHERE spec_code='{spec}';")
-            self.con.commit()
-            logging.info(f"for spec:{spec} was added 1")
-        except:
-            logging.warn(f"for spec:{spec} wasn`t added 1")
-
-    def get_add_subj(self,key):
-        try:
-            self.cur.execute(f"SELECT additional_subj_name FROM users WHERE user_id = {key}")
-            result = self.cur.fetchone()
-            logging.info(f"for id:{id} additional_subj_name was recieved")
-            return result[0]
-        except:
-            logging.error(f"for id:{id} no additional_subj_name was recieved")
-
-    def get_all_info(self,key):
-        try:
-            self.cur.execute(f"SELECT * FROM users WHERE user_id = {key}")
-            result = self.cur.fetchone()
-            logging.info(f"for id:{id} info was recieved")
-            return list(result)
-        except:
-            logging.error(f"for id:{id} no info was recieved")
-
-    def get_users(self):
-        try:
-            self.cur.execute(f"SELECT user_id FROM users WHERE 1=1")
-            results = self.cur.fetchall()
-            column_values = [result[0] for result in results]
-
-            logging.info('all users was recieved')
-            return list(column_values)
-        except:
-            logging.error("no users was recieved")
-    def get_users_amount(self):
-        try:
-            self.cur.execute(f"SELECT count(user_id) FROM users WHERE 1=1")
-            result = self.cur.fetchone()
-            logging.info("users amount was recieved")
-            return result[0]
-        except:
-            logging.info("users amount wasn`t recieved")
+            self.session.rollback()
+            logging.warn(f"1 was not added to spec_code {spec_code}.")
 
 
-    def get_stats(self):
+
+    def get_user_info(self, user_id):#+?
         try:
-            self.cur.execute(f"SELECT * FROM spec_list ORDER BY amount DESC;")
-            res = self.cur.fetchall()
-            result = []
-            for r in res:
-                result.append([r[0],r[1]])
-            logging.info("stats was recieved")
-            return result
+            user_info = self.session.query(User).filter(User.user_id == user_id).one()
+            logging.info(f"User info for user with user_id {user_id} was retrieved.")
+            return user_info
         except:
-            logging.error("stats wasn`t recieved")
+            logging.error(f"No user info was retrieved for user with user_id {user_id}.")
+
+    def get_all_users(self): #+?
+        try:
+            user_ids = [user[0] for user in self.session.query(User.user_id).all()]
+            logging.info("All user IDs were retrieved.")
+            return user_ids
+        except:
+            logging.error("No user IDs were retrieved.")
+
+    def get_user_count(self):#+?
+        try:
+            user_count = self.session.query(User).count()
+            logging.info("User count was retrieved.")
+            return user_count
+        except:
+            logging.error("User count was not retrieved.")
+
+    def get_stats(self):#+?
+        try:
+            stats = self.session.query(SpecList.spec_code, SpecList.amount).order_by(SpecList.amount.desc()).all()
+            logging.info("Stats were retrieved.")
+            return stats
+        except:
+            logging.error("Stats were not retrieved.")

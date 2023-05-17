@@ -58,7 +58,7 @@ async def about(message_or_callback):
 async def welcome_message(message: types.Message):
     bot: Bot = message.bot
     DB = database()
-    DB.add_id(message.from_user.id)
+    DB.add_user(message.from_user.id)
     await Form.welcome.set()
     text = "😉 Привіт! Я допоможу розрахувати конкурсний бал для вступу😳📊.\nЦе дасть змогу оцінити ☝🏻, на яку спеціальність у вас кращі шанси для вступу! Цей бот розроблено в <a href = \"www.hneu.edu.ua\">Харківському національному економічному університеті імені Семена Кузнеця ❤️👨‍🎓</a>"
     await bot.send_message(chat_id= message.chat.id,text =text,disable_web_page_preview=True)

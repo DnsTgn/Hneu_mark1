@@ -78,7 +78,7 @@ async def sending(call:types.CallbackQuery):
 
     try:
         DB = database()
-        users = DB.get_users()
+        users = DB.get_all_users()
 
         # Створюємо повідомлення, яке відправимо підписникам
         state = Dispatcher.get_current().current_state()

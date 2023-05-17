@@ -22,7 +22,7 @@ async def stats_file():
             r.insert(1,dictionary[r[0]]['name'])
 
         DB = database()
-        amount_users = DB.get_users_amount()
+        amount_users = DB.get_users_count()
         res.insert(0,[])
         res.insert(0,["Загалом розрахунків",amount])
         res.insert(0, ["Кількість користувачів бота", amount_users])

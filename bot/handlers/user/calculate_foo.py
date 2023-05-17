@@ -53,7 +53,7 @@ async def add_subj_quest(message:types.Message):
 
 async def add_subj_answer(call:types.CallbackQuery):
     DB = database()
-    DB.add_add_subj(call.data,call.from_user.id)
+    DB.add_additional_subj_name(call.data,call.from_user.id)
     await add_subj_mark_quest(call)
 
 async def add_subj_mark_quest(call:types.CallbackQuery):
@@ -126,7 +126,7 @@ async def region_answer(call:types.CallbackQuery):
 
 async def calculate(call:types.CallbackQuery):
     DB = database()
-    result = DB.get_all_info(call.from_user.id)
+    result = DB.get_user_info(call.from_user.id)
     state = Dispatcher.get_current().current_state()
     reg = 0
     spec = str()

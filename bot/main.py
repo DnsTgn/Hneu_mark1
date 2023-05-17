@@ -4,7 +4,7 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 import logging
 import os
 
-from .database.methods import database
+from .database.methods.db import  database
 
 from .handlers import register_all_handlers
 
